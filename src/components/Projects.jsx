@@ -1,11 +1,69 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function Projects() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const [activeFilter, setActiveFilter] = useState('all')
+  const { ref, isVisible } = useScrollReveal(0.25)
+  const titleRef = useRef(null)
+  const imagesRef = useRef(null)
+  const [isTitleVisible, setIsTitleVisible] = useState(false)
+  const [isImagesVisible, setIsImagesVisible] = useState(false)
+
+  // Observador para el título (desde la izquierda)
+  useEffect(() => {
+    const titleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsTitleVisible(true)
+            titleObserver.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    if (titleRef.current) {
+      titleObserver.observe(titleRef.current)
+    }
+
+    return () => {
+      if (titleRef.current) {
+        titleObserver.unobserve(titleRef.current)
+      }
+      titleObserver.disconnect()
+    }
+  }, [])
+
+  // Observador para las imágenes (desde la derecha)
+  useEffect(() => {
+    const imagesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsImagesVisible(true)
+            imagesObserver.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+
+    if (imagesRef.current) {
+      imagesObserver.observe(imagesRef.current)
+    }
+
+    return () => {
+      if (imagesRef.current) {
+        imagesObserver.unobserve(imagesRef.current)
+      }
+      imagesObserver.disconnect()
+    }
+  }, [])
 
   const translations = {
     es: {
@@ -94,11 +152,29 @@ function Projects() {
     : t.projects.filter(project => project.category === activeFilter)
 
   return (
-    <section className={`snap-start min-h-screen py-32 relative transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`} style={{ scrollMarginTop: '80px' }}>
+    <section
+      ref={ref}
+      className={`
+        snap-start snap-always
+        min-h-screen py-32 relative
+        transition-colors duration-300
+        transform-gpu
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}
+      `}
+      style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
+    >
       <div className="container mx-auto px-6">
         {/* Título grande arriba - en su propio contenedor */}
-        <div className="mb-12 lg:mb-16">
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+        <div 
+          ref={titleRef}
+          className={`mb-12 lg:mb-16 transition-all duration-1000 ease-out ${
+            isTitleVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-20'
+          }`}
+        >
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[120px] font-black leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
             {t.title}
           </h2>
         </div>
@@ -113,7 +189,7 @@ function Projects() {
                   <button
                     onClick={() => setActiveFilter('all')}
                     className={`text-left transition-colors ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
+                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                     } ${activeFilter === 'all' ? 'font-medium' : ''}`}
                     style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
                   >
@@ -158,8 +234,8 @@ function Projects() {
 
             {/* Footer con información de contacto */}
             <div className="mt-auto">
-              <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
-              <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
+              <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
+              <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
               <button className={`
                 px-6 
                 py-3 
@@ -176,10 +252,27 @@ function Projects() {
           </div>
 
           {/* Columna Derecha - Grid de Proyectos */}
-          <div className="lg:col-span-2">
+          <div 
+            ref={imagesRef}
+            className={`lg:col-span-2 transition-all duration-1000 ease-out delay-300 ${
+              isImagesVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 translate-x-20'
+            }`}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredProjects.map((project) => (
-                <div key={project.id} className="group cursor-pointer">
+              {filteredProjects.map((project, index) => (
+                <div 
+                  key={project.id} 
+                  className={`group cursor-pointer transition-all duration-700 ease-out ${
+                    isImagesVisible 
+                      ? 'opacity-100 translate-x-0' 
+                      : 'opacity-0 translate-x-20'
+                  }`}
+                  style={{ 
+                    transitionDelay: isImagesVisible ? `${index * 100}ms` : '0ms' 
+                  }}
+                >
                   {/* Imagen del proyecto */}
                   <div className="
                     w-full 
@@ -205,12 +298,12 @@ function Projects() {
                   </div>
                   
                   {/* Nombre del proyecto */}
-                  <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                     {project.name}
                   </h3>
                   
                   {/* Línea separadora */}
-                  <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-white' : 'bg-gray-900'}`}></div>
+                  <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
                   
                   {/* Tag/Descripción placeholder */}
                   <div className={`

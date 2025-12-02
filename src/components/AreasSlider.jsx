@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function AreasSlider() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const [currentSlide, setCurrentSlide] = useState(0)
+  const { ref, isVisible } = useScrollReveal(0.25)
 
   const translations = {
     es: {
@@ -81,20 +83,31 @@ function AreasSlider() {
   }
 
   return (
-    <section className={`snap-start min-h-screen py-32 overflow-x-hidden transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`} style={{ scrollMarginTop: '80px' }}>
+    <section
+      ref={ref}
+      className={`
+        snap-start snap-always
+        min-h-screen py-32 overflow-x-hidden
+        transition-colors duration-300
+        transform-gpu
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}
+      `}
+      style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
+    >
       <div className="container mx-auto px-6">
         {/* Header con título y descripción */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mb-16 items-start">
           {/* Columna izquierda - Título */}
           <div>
-            <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black mb-8 text-left leading-[100px] transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black mb-8 text-left leading-[100px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
               {t.title}
             </h2>
           </div>
 
           {/* Columna derecha - Descripción y botón */}
           <div className="flex flex-col justify-start">
-            <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+            <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
               {t.description}
             </p>
             <button className={`
@@ -164,16 +177,16 @@ function AreasSlider() {
                   className="space-y-1 text-center"
                 >
                   {/* Título ÁREA */}
-                  <h3 className={`text-lg font-medium transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <h3 className={`text-lg font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                     {area.title}
                   </h3>
                   
                   {/* Información de contacto */}
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                     {area.location}
                   </p>
                   
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                     {area.tagline}
                   </p>
                 </div>
@@ -184,7 +197,7 @@ function AreasSlider() {
           {/* Botones de navegación - centrados en la mitad de la altura de las imágenes */}
           <button
             onClick={prevSlide}
-            className={`absolute left-0 -translate-x-8 w-8 h-8 flex items-center justify-center transition-colors duration-200 z-10 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+            className={`absolute left-0 -translate-x-8 w-8 h-8 flex items-center justify-center transition-colors duration-200 z-10 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`}
             style={{ top: '103.5px' }}
             aria-label="Slide anterior"
           >
@@ -195,7 +208,7 @@ function AreasSlider() {
 
           <button
             onClick={nextSlide}
-            className={`absolute right-0 translate-x-8 w-8 h-8 flex items-center justify-center transition-colors duration-200 z-10 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}
+            className={`absolute right-0 translate-x-8 w-8 h-8 flex items-center justify-center transition-colors duration-200 z-10 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`}
             style={{ top: '103.5px' }}
             aria-label="Slide siguiente"
           >

@@ -1,9 +1,11 @@
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function AboutUs() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
+  const { ref, isVisible } = useScrollReveal(0.25)
 
   const translations = {
     es: {
@@ -19,10 +21,21 @@ function AboutUs() {
   const t = translations[language]
 
   return (
-    <section className={`snap-start min-h-screen py-32 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`} style={{ scrollMarginTop: '80px' }}>
+    <section
+      ref={ref}
+      className={`
+        snap-start snap-always
+        min-h-screen py-32
+        transition-colors duration-300
+        transform-gpu
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}
+      `}
+      style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
+    >
       <div className="container mx-auto px-6">
         {/* Título */}
-        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black mb-12 text-left leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black mb-12 text-left leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
           {t.title}
         </h2>
 
@@ -48,7 +61,7 @@ function AboutUs() {
 
           {/* Columna derecha - Texto centrado verticalmente */}
           <div className="flex items-center">
-            <p className={`leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+            <p className={`leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
               {t.description}
             </p>
           </div>

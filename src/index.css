@@ -117,14 +117,25 @@
   --font-family-sans: var(--font-delight);
 }
 
-/* Scroll snapping por secciones */
+/* Scroll básico sin snapping */
 html {
-  scroll-snap-type: y proximity;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
-  scroll-snap-type: y proximity;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+/* Mejorar la suavidad del scroll en navegadores modernos */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  * {
+    scroll-behavior: inherit;
+  }
 }
 

@@ -55,8 +55,8 @@ function Header() {
               to="/"
               className={`relative transition text-sm pb-2 group ${
                 isActive('/') 
-                  ? isDarkMode ? 'text-white font-medium' : 'text-gray-900 font-medium'
-                  : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
+                  : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
@@ -71,8 +71,8 @@ function Header() {
               to="/about"
               className={`relative transition text-sm pb-2 group ${
                 isActive('/about') 
-                  ? isDarkMode ? 'text-white font-medium' : 'text-gray-900 font-medium'
-                  : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
+                  : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
@@ -87,8 +87,8 @@ function Header() {
               to="/services"
               className={`relative transition text-sm pb-2 group ${
                 isActive('/services') 
-                  ? isDarkMode ? 'text-white font-medium' : 'text-gray-900 font-medium'
-                  : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
+                  : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
@@ -103,8 +103,8 @@ function Header() {
               to="/case-studies"
               className={`relative transition text-sm pb-2 group ${
                 isActive('/case-studies') 
-                  ? isDarkMode ? 'text-white font-medium' : 'text-gray-900 font-medium'
-                  : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
+                  : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
@@ -119,8 +119,8 @@ function Header() {
               to="/contact"
               className={`relative transition text-sm pb-2 group ${
                 isActive('/contact') 
-                  ? isDarkMode ? 'text-white font-medium' : 'text-gray-900 font-medium'
-                  : isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+                  ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
+                  : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
@@ -138,7 +138,7 @@ function Header() {
             {/* Switch de idioma */}
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-200 text-gray-900'}`}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
             >
               <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
@@ -148,7 +148,7 @@ function Header() {
             {/* Icono día/noche */}
             <button
               onClick={toggleTheme}
-              className={`flex items-center justify-center w-10 h-10 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-200 text-gray-900'}`}
+              className={`flex items-center justify-center w-10 h-10 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               title={isDarkMode ? 'Modo día' : 'Modo noche'}
             >
               {isDarkMode ? (
@@ -175,7 +175,7 @@ function Header() {
             <Link
               to="/"
               onClick={() => setIsMenuOpen(false)}
-              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
               {t.home}
@@ -183,7 +183,7 @@ function Header() {
             <Link
               to="/about"
               onClick={() => setIsMenuOpen(false)}
-              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
               {t.about}
@@ -191,7 +191,7 @@ function Header() {
             <Link
               to="/services"
               onClick={() => setIsMenuOpen(false)}
-              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
               {t.services}
@@ -199,7 +199,7 @@ function Header() {
             <Link
               to="/case-studies"
               onClick={() => setIsMenuOpen(false)}
-              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
               {t.caseStudies}
@@ -207,7 +207,7 @@ function Header() {
             <Link
               to="/contact"
               onClick={() => setIsMenuOpen(false)}
-              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'}`}
+              className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
               {t.contact}
@@ -215,7 +215,7 @@ function Header() {
             <div className="flex items-center gap-3 pt-2">
               <button
                 onClick={toggleLanguage}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition flex-1 ${isDarkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-200 text-gray-900'}`}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition flex-1 ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               >
                 <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                   {language === 'es' ? 'ES' : 'EN'}
@@ -223,7 +223,7 @@ function Header() {
               </button>
               <button
                 onClick={toggleTheme}
-                className={`flex items-center justify-center w-10 h-10 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-white' : 'hover:bg-gray-200 text-gray-900'}`}
+                className={`flex items-center justify-center w-10 h-10 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               >
                 {isDarkMode ? (
                   <HiSun className="w-5 h-5" />

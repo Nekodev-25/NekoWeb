@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 function Services() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
+  const { ref, isVisible } = useScrollReveal(0.25)
   const [expandedService, setExpandedService] = useState(0) // Primer servicio expandido por defecto
 
   const translations = {
@@ -179,10 +181,21 @@ function Services() {
   }
 
   return (
-    <section className={`snap-start min-h-screen py-32 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`} style={{ scrollMarginTop: '80px' }}>
+    <section
+      ref={ref}
+      className={`
+        snap-start snap-always
+        min-h-screen py-32
+        transition-colors duration-300
+        transform-gpu
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+        ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}
+      `}
+      style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
+    >
       <div className="container mx-auto px-6">
         {/* Título principal alineado a la izquierda */}
-        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black text-left mb-24 leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[80px] font-black text-left mb-24 leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
           {t.title}
         </h2>
 
@@ -193,7 +206,7 @@ function Services() {
               {/* Header del servicio - siempre visible */}
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-4">
-                  <span className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <span className={`text-lg transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                     {String(index + 1).padStart(2, '0')}. {service.name}
                   </span>
                 </div>
@@ -201,7 +214,7 @@ function Services() {
                   onClick={() => toggleService(service.id)}
                   className={`w-8 h-8 rounded-full border flex items-center justify-center transition-transform duration-200 hover:scale-110 ${isDarkMode ? 'border-white' : 'border-gray-900'}`}
                 >
-                  <span className={`text-xl transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ transform: expandedService === service.id ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
+                  <span className={`text-xl transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ transform: expandedService === service.id ? 'rotate(45deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>
                     +
                   </span>
                 </button>
@@ -224,12 +237,12 @@ function Services() {
                         }`}
                       >
                         {/* Título del plan */}
-                        <h3 className={`text-2xl font-medium mb-3 transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                        <h3 className={`text-2xl font-medium mb-3 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                           {plan.name}
                         </h3>
                         
                         {/* Precio */}
-                        <p className={`mb-3 text-lg transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                        <p className={`mb-3 text-lg transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                           {plan.price}
                         </p>
                         
@@ -251,7 +264,7 @@ function Services() {
                                   <span className={`text-sm font-bold ${isDarkMode ? 'text-black' : 'text-white'}`}>+</span>
                                 )}
                               </div>
-                              <span className={`text-base leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                              <span className={`text-base leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
                                 {feature.text}
                               </span>
                             </li>
