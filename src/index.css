@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+/* Fuente Archivo desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300&display=swap');
+
+/* Fuente Delight - Todas las variantes */
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Delight';
+  src: url('/fonts/Delight-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 
+ * EJEMPLO: Cómo agregar una nueva fuente desde Behance
+ * 
+ * 1. Descarga los archivos de fuente (.woff2, .woff, .ttf, etc.)
+ * 2. Colócalos en la carpeta: public/fonts/
+ * 3. Agrega el @font-face aquí abajo:
+ * 
+ * @font-face {
+ *   font-family: 'NombreDeLaFuente';
+ *   src: url('/fonts/NombreDeLaFuente-Regular.woff2') format('woff2'),
+ *        url('/fonts/NombreDeLaFuente-Regular.woff') format('woff');
+ *   font-weight: 400;  // Normal
+ *   font-style: normal;
+ *   font-display: swap;
+ * }
+ * 
+ * @font-face {
+ *   font-family: 'NombreDeLaFuente';
+ *   src: url('/fonts/NombreDeLaFuente-Bold.woff2') format('woff2'),
+ *        url('/fonts/NombreDeLaFuente-Bold.woff') format('woff');
+ *   font-weight: 700;  // Bold
+ *   font-style: normal;
+ *   font-display: swap;
+ * }
+ * 
+ * 4. Agrega la variable CSS en @theme:
+ *    --font-nombre: 'NombreDeLaFuente', sans-serif;
+ * 
+ * 5. Úsala en los componentes con:
+ *    style={{ fontFamily: 'var(--font-nombre)', fontWeight: 400 }}
+ */
+
+/* Configuración de fuentes en Tailwind v4 */
+@theme {
+  --font-delight: 'Delight', sans-serif;
+  --font-archivo: 'Archivo', sans-serif;
+  
+  /* Aplicar Delight como fuente por defecto */
+  --font-family-sans: var(--font-delight);
+}
+
+/* Scroll snapping por secciones */
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+body {
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+}
+
