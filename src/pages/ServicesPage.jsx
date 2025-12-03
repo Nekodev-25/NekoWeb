@@ -1,4 +1,4 @@
-import Services from '../components/Services'
+import PlansSelector from '../components/PlansSelector'
 import CustomServiceForm from '../components/CustomServiceForm'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
@@ -7,7 +7,7 @@ function ServicesPage() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
 
-  // Servicios para el formulario personalizado (mismos que en Services.jsx)
+  // Servicios para el formulario personalizado
   const servicesData = {
     es: [
       { id: 0, name: 'Web develope' },
@@ -27,8 +27,8 @@ function ServicesPage() {
 
   return (
     <>
-      {/* Acordeón de servicios */}
-      <Services />
+      {/* Selector de planes con switch */}
+      <PlansSelector />
       
       {/* Formulario personalizado */}
       <section className={`snap-start min-h-screen pb-32 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`} style={{ scrollMarginTop: '80px' }}>

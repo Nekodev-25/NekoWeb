@@ -11,7 +11,7 @@ function AreasSlider() {
 
   const translations = {
     es: {
-      title: 'Todo en un mismo espacio',
+      title: 'Todo en un espacio',
       description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
       ctaButton: 'Conocenos',
       areas: [
@@ -39,7 +39,7 @@ function AreasSlider() {
       ],
     },
     en: {
-      title: 'Everything in one space',
+      title: 'All in one space',
       description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
       ctaButton: 'Know Us',
       areas: [

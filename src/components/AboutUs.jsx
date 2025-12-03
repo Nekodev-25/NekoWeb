@@ -10,11 +10,31 @@ function AboutUs() {
   const translations = {
     es: {
       title: 'Nosotros',
-      description: 'Somos puchitos que lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      description: 'Somos que lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem i',
+      members: [
+        {
+          name: 'Tomás Averbuj',
+          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+        },
+        {
+          name: 'Tomás Averbuj',
+          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+        },
+      ],
     },
     en: {
       title: 'About Us',
-      description: 'We are puchitos that lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      description: 'We are that lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem i',
+      members: [
+        {
+          name: 'Tomás Averbuj',
+          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+        },
+        {
+          name: 'Tomás Averbuj',
+          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+        },
+      ],
     },
   }
 
@@ -39,32 +59,37 @@ function AboutUs() {
           {t.title}
         </h2>
 
-        {/* Contenido: Imágenes a la izquierda, texto a la derecha */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Columna izquierda - Dos imágenes personales más pequeñas */}
-          <div className="flex flex-col gap-6">
-            <div className={`w-64 h-64 rounded-lg overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-                alt="Team member 1"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className={`w-64 h-64 rounded-lg overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop"
-                alt="Team member 2"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+        {/* Párrafo descriptivo */}
+        <p className={`mb-16 leading-relaxed text-left transition-colors duration-300 max-w-4xl ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+          {t.description}
+        </p>
 
-          {/* Columna derecha - Texto centrado verticalmente */}
-          <div className="flex items-center">
-            <p className={`leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-              {t.description}
-            </p>
-          </div>
+        {/* Cards de perfil */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+          {t.members.map((member, index) => (
+            <div key={index} className="flex flex-col items-center text-center">
+              {/* Imagen con posible icono */}
+              <div className="relative w-full max-w-md mb-6">
+                <div className={`w-full aspect-square rounded-lg overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
+                  <img
+                    src={`https://images.unsplash.com/photo-${index === 0 ? '1472099645785-5658abf4ff4e' : '1494790108377-be9c29b29330'}?w=400&h=400&fit=crop`}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              {/* Nombre */}
+              <h3 className={`text-xl font-bold mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 700 }}>
+                {member.name}
+              </h3>
+
+              {/* Descripción */}
+              <p className={`text-sm leading-relaxed transition-colors duration-300 max-w-md ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {member.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
