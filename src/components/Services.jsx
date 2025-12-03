@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -6,6 +7,7 @@ function Services() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const { ref, isVisible } = useScrollReveal(0.25)
+  const navigate = useNavigate()
 
   const translations = {
     es: {
@@ -154,18 +156,27 @@ function Services() {
               </ul>
 
               {/* Botón */}
-              <button className={`
-                w-full
-                px-8 
-                py-4 
-                rounded-xl
-                font-medium 
-                transition-all 
-                duration-200
-                text-base
-                mt-auto
-                ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-              `} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
+              <button 
+                onClick={() => {
+                  // Mapear cada plan a su tipo correspondiente
+                  const planTypes = ['basico', 'ecommerce', 'aplicaciones']
+                  const planType = planTypes[index]
+                  navigate(`/services?plan=${planType}`)
+                }}
+                className={`
+                  w-full
+                  px-8 
+                  py-4 
+                  rounded-xl
+                  font-medium 
+                  transition-all 
+                  duration-200
+                  text-base
+                  mt-auto
+                  ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                `} 
+                style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+              >
                 {t.buttonText}
               </button>
             </div>

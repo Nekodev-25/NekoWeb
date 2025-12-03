@@ -6,7 +6,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 function Projects() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
-  const [activeFilter, setActiveFilter] = useState('all')
+  const [activeFilter, setActiveFilter] = useState('webDesign')
   const { ref, isVisible } = useScrollReveal(0.25)
   const titleRef = useRef(null)
   const imagesRef = useRef(null)
@@ -102,6 +102,30 @@ function Projects() {
           category: 'webDesign',
           image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
         },
+        {
+          id: 5,
+          name: 'Nombre del proyecto',
+          category: 'webDevelop',
+          image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
+        },
+        {
+          id: 6,
+          name: 'Nombre del proyecto',
+          category: 'branding',
+          image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop',
+        },
+        {
+          id: 7,
+          name: 'Nombre del proyecto',
+          category: 'webDesign',
+          image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=800&h=600&fit=crop',
+        },
+        {
+          id: 8,
+          name: 'Nombre del proyecto',
+          category: 'webDevelop',
+          image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
+        },
       ],
     },
     en: {
@@ -139,6 +163,30 @@ function Projects() {
           name: 'Project name',
           category: 'webDesign',
           image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
+        },
+        {
+          id: 5,
+          name: 'Project name',
+          category: 'webDevelop',
+          image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
+        },
+        {
+          id: 6,
+          name: 'Project name',
+          category: 'branding',
+          image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop',
+        },
+        {
+          id: 7,
+          name: 'Project name',
+          category: 'webDesign',
+          image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=800&h=600&fit=crop',
+        },
+        {
+          id: 8,
+          name: 'Project name',
+          category: 'webDevelop',
+          image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
         },
       ],
     },
@@ -188,45 +236,65 @@ function Projects() {
                 <li>
                   <button
                     onClick={() => setActiveFilter('all')}
-                    className={`text-left transition-colors ${
+                    className={`relative text-left transition-colors pb-2 group ${
                       isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                     } ${activeFilter === 'all' ? 'font-medium' : ''}`}
                     style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
                   >
                     {t.filters.all}
+                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      activeFilter === 'all'
+                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                    }`}></div>
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => setActiveFilter('webDesign')}
-                    className={`text-left transition-colors ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
+                    className={`relative text-left transition-colors pb-2 group ${
+                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                     } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
                   >
                     {t.filters.webDesign}
+                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      activeFilter === 'webDesign'
+                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                    }`}></div>
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => setActiveFilter('webDevelop')}
-                    className={`text-left transition-colors ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
+                    className={`relative text-left transition-colors pb-2 group ${
+                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                     } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
                   >
                     {t.filters.webDevelop}
+                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      activeFilter === 'webDevelop'
+                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                    }`}></div>
                   </button>
                 </li>
                 <li>
                   <button
                     onClick={() => setActiveFilter('branding')}
-                    className={`text-left transition-colors ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
+                    className={`relative text-left transition-colors pb-2 group ${
+                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                     } ${activeFilter === 'branding' ? 'font-medium' : ''}`}
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
                   >
                     {t.filters.branding}
+                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      activeFilter === 'branding'
+                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                    }`}></div>
                   </button>
                 </li>
               </ul>
@@ -236,18 +304,24 @@ function Projects() {
             <div className="mt-auto">
               <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
               <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
-              <button className={`
-                px-6 
-                py-3 
-                rounded-full 
-                font-medium 
-                transition-colors 
-                duration-200
-                text-sm
-                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-              `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              <a 
+                href="#contact"
+                className={`
+                  inline-block
+                  px-6 
+                  py-3 
+                  rounded-full 
+                  font-medium 
+                  transition-colors 
+                  duration-200
+                  text-sm
+                  text-center
+                  ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                `} 
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              >
                 {t.contactButton}
-              </button>
+              </a>
             </div>
           </div>
 

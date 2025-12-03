@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import PlansSelector from '../components/PlansSelector'
 import CustomServiceForm from '../components/CustomServiceForm'
 import { useLanguage } from '../context/LanguageContext'
@@ -6,6 +8,16 @@ import { useTheme } from '../context/ThemeContext'
 function ServicesPage() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
+  const [searchParams] = useSearchParams()
+
+  // Reiniciar scroll al inicio cuando se carga la página con un parámetro de plan
+  useEffect(() => {
+    const planParam = searchParams.get('plan')
+    if (planParam) {
+      // Reiniciar scroll al inicio de la página
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [searchParams])
 
   // Servicios para el formulario personalizado
   const servicesData = {

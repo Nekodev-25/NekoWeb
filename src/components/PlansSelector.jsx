@@ -1,14 +1,25 @@
 import { useState, useEffect } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
-function PlansSelector() {
+function PlansSelector({ initialPlanType }) {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const { ref, isVisible } = useScrollReveal(0.25)
-  const [selectedPlanType, setSelectedPlanType] = useState('basico')
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const [selectedPlanType, setSelectedPlanType] = useState(initialPlanType || searchParams.get('plan') || 'basico')
   const [isFading, setIsFading] = useState(false)
+
+  // Sincronizar con el parámetro de URL cuando cambia
+  useEffect(() => {
+    const planParam = searchParams.get('plan')
+    if (planParam && ['basico', 'ecommerce', 'aplicaciones'].includes(planParam)) {
+      setSelectedPlanType(planParam)
+    }
+  }, [searchParams])
 
   const translations = {
     es: {
@@ -21,7 +32,7 @@ function PlansSelector() {
       plans: {
         basico: [
           {
-            name: 'Plan bondiola',
+            name: 'Plan básico',
             price: 'Desde $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -32,7 +43,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan ashe',
+            name: 'Plan básico',
             price: 'Desde $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -43,7 +54,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan tita',
+            name: 'Plan básico',
             price: 'Desde $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -56,7 +67,7 @@ function PlansSelector() {
         ],
         ecommerce: [
           {
-            name: 'Plan e-commerce 1',
+            name: 'e-commerce',
             price: 'Desde $3.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -67,7 +78,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan e-commerce 2',
+            name: 'e-commerce',
             price: 'Desde $3.500',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -78,7 +89,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan e-commerce 3',
+            name: 'e-commerce',
             price: 'Desde $4.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -91,7 +102,7 @@ function PlansSelector() {
         ],
         aplicaciones: [
           {
-            name: 'Plan aplicaciones 1',
+            name: 'aplicaciones',
             price: 'Desde $5.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -102,7 +113,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan aplicaciones 2',
+            name: 'aplicaciones',
             price: 'Desde $6.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -113,7 +124,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan aplicaciones 3',
+            name: 'aplicaciones',
             price: 'Desde $7.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -131,13 +142,13 @@ function PlansSelector() {
       title: 'Plans and services',
       planTypes: {
         basico: 'BASIC',
-        intermedio: 'INTERMEDIATE',
-        premium: 'PREMIUM',
+        ecommerce: 'E-COMMERCE',
+        aplicaciones: 'APPLICATIONS',
       },
       plans: {
         basico: [
           {
-            name: 'Plan bondiola',
+            name: 'Basic plan',
             price: 'From $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -148,7 +159,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan ashe',
+            name: 'Basic plan',
             price: 'From $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -159,7 +170,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Plan tita',
+            name: 'Basic plan',
             price: 'From $2.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -172,7 +183,7 @@ function PlansSelector() {
         ],
         ecommerce: [
           {
-            name: 'E-commerce plan 1',
+            name: 'e-commerce',
             price: 'From $3.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -183,7 +194,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'E-commerce plan 2',
+            name: 'e-commerce',
             price: 'From $3.500',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -194,7 +205,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'E-commerce plan 3',
+            name: 'e-commerce',
             price: 'From $4.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -207,7 +218,7 @@ function PlansSelector() {
         ],
         aplicaciones: [
           {
-            name: 'Applications plan 1',
+            name: 'applications',
             price: 'From $5.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -218,7 +229,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Applications plan 2',
+            name: 'applications',
             price: 'From $6.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -229,7 +240,7 @@ function PlansSelector() {
             ],
           },
           {
-            name: 'Applications plan 3',
+            name: 'applications',
             price: 'From $7.000',
             description: 'Lorem ipsum dolor sit amet',
             features: [
@@ -361,18 +372,33 @@ function PlansSelector() {
               </ul>
 
               {/* Botón */}
-              <button className={`
-                w-full
-                px-8 
-                py-4 
-                rounded-xl
-                font-medium 
-                transition-all 
-                duration-200
-                text-base
-                mt-auto
-                ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-              `} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
+              <button 
+                onClick={() => {
+                  const currentPath = window.location.pathname
+                  if (currentPath === '/services') {
+                    // Si ya estamos en servicios, actualizar la URL y reiniciar scroll
+                    navigate(`/services?plan=${selectedPlanType}`, { replace: true })
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  } else {
+                    // Si estamos en otra página, navegar a servicios y reiniciar scroll
+                    navigate(`/services?plan=${selectedPlanType}`)
+                    // El scroll se reiniciará cuando se cargue la página
+                  }
+                }}
+                className={`
+                  w-full
+                  px-8 
+                  py-4 
+                  rounded-xl
+                  font-medium 
+                  transition-all 
+                  duration-200
+                  text-base
+                  mt-auto
+                  ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                `} 
+                style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+              >
                 {t.buttonText}
               </button>
             </div>

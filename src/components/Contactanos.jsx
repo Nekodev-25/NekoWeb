@@ -64,6 +64,7 @@ function Contactanos() {
 
   return (
     <section
+      id="contact"
       ref={ref}
       className={`
         snap-start snap-always

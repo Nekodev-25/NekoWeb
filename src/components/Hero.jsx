@@ -10,13 +10,13 @@ function Hero() {
   const translations = {
     es: {
       title: 'Lorem ipsum dolor sit amet lorem ipsum',
-      description: 'Somos puchitos que lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem',
+      description: 'Somos que lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem',
       cta1: 'Ver proyectos',
       cta2: 'Contacto',
     },
     en: {
       title: 'Lorem ipsum dolor sit amet lorem ipsum',
-      description: 'We are puchitos that lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem',
+      description: 'We are that lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem',
       cta1: 'View projects',
       cta2: 'Contact',
     },
