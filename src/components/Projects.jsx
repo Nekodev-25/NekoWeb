@@ -50,7 +50,7 @@ function Projects() {
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: '50px' }
     )
 
     if (imagesRef.current) {
@@ -227,108 +227,237 @@ function Projects() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Columna Izquierda - Filtros y Footer */}
-          <div className="lg:col-span-1 flex flex-col justify-between">
-            <div>
-              {/* Lista de filtros */}
-              <ul className="space-y-4 mb-12">
-                <li>
-                  <button
-                    onClick={() => setActiveFilter('all')}
-                    className={`relative text-left transition-colors pb-2 group ${
-                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                    } ${activeFilter === 'all' ? 'font-medium' : ''}`}
-                    style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
-                  >
-                    {t.filters.all}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                      activeFilter === 'all'
-                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-                    }`}></div>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveFilter('webDesign')}
-                    className={`relative text-left transition-colors pb-2 group ${
-                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                    } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
-                    style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
-                  >
-                    {t.filters.webDesign}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                      activeFilter === 'webDesign'
-                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-                    }`}></div>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveFilter('webDevelop')}
-                    className={`relative text-left transition-colors pb-2 group ${
-                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                    } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
-                    style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
-                  >
-                    {t.filters.webDevelop}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                      activeFilter === 'webDevelop'
-                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-                    }`}></div>
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => setActiveFilter('branding')}
-                    className={`relative text-left transition-colors pb-2 group ${
-                      isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                    } ${activeFilter === 'branding' ? 'font-medium' : ''}`}
-                    style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
-                  >
-                    {t.filters.branding}
-                    <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                      activeFilter === 'branding'
-                        ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                        : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-                    }`}></div>
-                  </button>
-                </li>
-              </ul>
-            </div>
-
-            {/* Footer con información de contacto */}
-            <div className="mt-auto">
-              <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
-              <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
-              <a 
-                href="#contact"
-                className={`
-                  inline-block
-                  px-6 
-                  py-3 
-                  rounded-full 
-                  font-medium 
-                  transition-colors 
-                  duration-200
-                  text-sm
-                  text-center
-                  ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-                `} 
-                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
-              >
-                {t.contactButton}
-              </a>
-            </div>
+        {/* Filtros - Mobile horizontal, Desktop vertical */}
+        <div className="mb-8 lg:mb-0">
+          {/* Mobile: Filtros horizontales */}
+          <div className="lg:hidden flex flex-wrap items-center gap-6 mb-8">
+            <button
+              onClick={() => setActiveFilter('all')}
+              className={`relative transition-colors pb-2 group ${
+                isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+              } ${activeFilter === 'all' ? 'font-medium' : ''}`}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
+            >
+              {t.filters.all}
+              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                activeFilter === 'all'
+                  ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                  : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+              }`}></div>
+            </button>
+            <button
+              onClick={() => setActiveFilter('webDesign')}
+              className={`relative transition-colors pb-2 group ${
+                isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+              } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
+            >
+              {t.filters.webDesign}
+              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                activeFilter === 'webDesign'
+                  ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                  : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+              }`}></div>
+            </button>
+            <button
+              onClick={() => setActiveFilter('webDevelop')}
+              className={`relative transition-colors pb-2 group ${
+                isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+              } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
+            >
+              {t.filters.webDevelop}
+              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                activeFilter === 'webDevelop'
+                  ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                  : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+              }`}></div>
+            </button>
+            <button
+              onClick={() => setActiveFilter('branding')}
+              className={`relative transition-colors pb-2 group ${
+                isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+              } ${activeFilter === 'branding' ? 'font-medium' : ''}`}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
+            >
+              {t.filters.branding}
+              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                activeFilter === 'branding'
+                  ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                  : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+              }`}></div>
+            </button>
           </div>
 
-          {/* Columna Derecha - Grid de Proyectos */}
+          {/* Desktop: Layout con sidebar */}
+          <div className="hidden lg:grid grid-cols-3 gap-12">
+            {/* Columna Izquierda - Filtros y Footer */}
+            <div className="col-span-1 flex flex-col justify-between">
+              <div>
+                {/* Lista de filtros */}
+                <ul className="space-y-4 mb-12">
+                  <li>
+                    <button
+                      onClick={() => setActiveFilter('all')}
+                      className={`relative text-left transition-colors pb-2 group ${
+                        isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+                      } ${activeFilter === 'all' ? 'font-medium' : ''}`}
+                      style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
+                    >
+                      {t.filters.all}
+                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                        activeFilter === 'all'
+                          ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                          : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                      }`}></div>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setActiveFilter('webDesign')}
+                      className={`relative text-left transition-colors pb-2 group ${
+                        isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+                      } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
+                    >
+                      {t.filters.webDesign}
+                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                        activeFilter === 'webDesign'
+                          ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                          : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                      }`}></div>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setActiveFilter('webDevelop')}
+                      className={`relative text-left transition-colors pb-2 group ${
+                        isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+                      } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
+                    >
+                      {t.filters.webDevelop}
+                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                        activeFilter === 'webDevelop'
+                          ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                          : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                      }`}></div>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      onClick={() => setActiveFilter('branding')}
+                      className={`relative text-left transition-colors pb-2 group ${
+                        isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
+                      } ${activeFilter === 'branding' ? 'font-medium' : ''}`}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
+                    >
+                      {t.filters.branding}
+                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                        activeFilter === 'branding'
+                          ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
+                          : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
+                      }`}></div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Footer con información de contacto */}
+              <div className="mt-auto">
+                <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
+                <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
+                <a 
+                  href="#contact"
+                  className={`
+                    inline-block
+                    px-6 
+                    py-3 
+                    rounded-full 
+                    font-medium 
+                    transition-colors 
+                    duration-200
+                    text-sm
+                    text-center
+                    ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                  `} 
+                  style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                >
+                  {t.contactButton}
+                </a>
+              </div>
+            </div>
+
+            {/* Columna Derecha - Grid de Proyectos */}
+            <div 
+              ref={imagesRef}
+              className="col-span-2"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {filteredProjects.map((project, index) => (
+                  <div 
+                    key={project.id} 
+                    className={`group cursor-pointer transition-all duration-700 ease-out ${
+                      isImagesVisible 
+                        ? 'opacity-100 translate-x-0' 
+                        : 'opacity-100 translate-x-0'
+                    }`}
+                    style={{ 
+                      transitionDelay: isImagesVisible ? `${index * 100}ms` : '0ms' 
+                    }}
+                  >
+                    {/* Imagen del proyecto */}
+                    <div className="
+                      w-full 
+                      h-[400px] 
+                      bg-gray-200 
+                      rounded-lg 
+                      overflow-hidden 
+                      mb-4
+                      relative
+                    ">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="
+                          w-full 
+                          h-full 
+                          object-cover 
+                          transition-transform 
+                          duration-300 
+                          group-hover:scale-105
+                        "
+                      />
+                    </div>
+                    
+                    {/* Nombre del proyecto */}
+                    <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                      {project.name}
+                    </h3>
+                    
+                    {/* Línea separadora */}
+                    <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
+                    
+                    {/* Tag/Descripción placeholder */}
+                    <div className={`
+                      w-24 
+                      h-6 
+                      rounded
+                      transition-colors duration-300
+                      ${isDarkMode ? 'bg-white' : 'bg-gray-200'}
+                    `}></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile: Footer debajo de los proyectos */}
+        <div className="lg:hidden mt-12">
           <div 
             ref={imagesRef}
-            className={`lg:col-span-2 transition-all duration-1000 ease-out delay-300 ${
+            className={`transition-all duration-1000 ease-out delay-300 ${
               isImagesVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 translate-x-20'
@@ -390,6 +519,30 @@ function Projects() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Footer con información de contacto */}
+          <div className="mt-12">
+            <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
+            <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
+            <a 
+              href="#contact"
+              className={`
+                inline-block
+                px-6 
+                py-3 
+                rounded-full 
+                font-medium 
+                transition-colors 
+                duration-200
+                text-sm
+                text-center
+                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+              `} 
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+            >
+              {t.contactButton}
+            </a>
           </div>
         </div>
       </div>

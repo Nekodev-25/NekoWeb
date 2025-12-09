@@ -15,14 +15,14 @@ function Header() {
       home: 'Inicio',
       about: 'Nosotros',
       services: 'Servicios',
-      caseStudies: 'Casos de estudio',
+      projects: 'Proyectos',
       contact: 'Contacto',
     },
     en: {
       home: 'Home',
       about: 'About',
       services: 'Services',
-      caseStudies: 'Case studies',
+      projects: 'Projects',
       contact: 'Contact',
     },
   }
@@ -100,17 +100,17 @@ function Header() {
               }`}></div>
             </Link>
             <Link
-              to="/case-studies"
+              to="/projects"
               className={`relative transition text-sm pb-2 group ${
-                isActive('/case-studies') 
+                isActive('/projects') 
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.caseStudies}
+              {t.projects}
               <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                isActive('/case-studies') 
+                isActive('/projects') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
               }`}></div>
@@ -208,12 +208,12 @@ function Header() {
               {t.services}
             </Link>
             <Link
-              to="/case-studies"
+              to="/projects"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.caseStudies}
+              {t.projects}
             </Link>
             {location.pathname === '/' ? (
               <a

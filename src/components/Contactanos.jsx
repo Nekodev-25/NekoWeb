@@ -85,8 +85,8 @@ function Contactanos() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Columna Izquierda - Ilustración del gato e información de contacto */}
-          <div className="lg:col-span-1 flex flex-col justify-end">
+          {/* Columna Izquierda - Ilustración del gato e información de contacto (solo desktop) */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col justify-end">
             {/* Imagen del gatito callcenter */}
             <div className="w-[200px] h-[200px] mb-4">
               <img 
@@ -237,6 +237,36 @@ function Contactanos() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+
+        {/* Mobile: Imagen del gatito e información de contacto debajo del formulario */}
+        <div className="lg:hidden mt-12">
+          <div className="flex flex-col items-center">
+            {/* Imagen del gatito callcenter */}
+            <div className="w-[200px] h-[200px] mb-6">
+              <img 
+                src="/images/gatito-callcenter.png" 
+                alt="Gatito callcenter" 
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Información de contacto */}
+            <div className="space-y-1 text-center">
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.location}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.tagline}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.phone}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.email}
+              </p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,6 +1,5 @@
 import { useTheme } from '../context/ThemeContext'
 import { useLanguage } from '../context/LanguageContext'
-import { HiSun, HiMoon } from 'react-icons/hi'
 
 function ThemeSelector() {
   const { setTheme, hasSelectedTheme, isLoading } = useTheme()
@@ -36,7 +35,11 @@ function ThemeSelector() {
         className="w-1/2 bg-[#F6F3E8] flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-[#E8E3D5] group"
       >
         <div className="flex flex-col items-center gap-4">
-          <HiSun className="w-16 h-16 text-gray-900 group-hover:scale-110 transition-transform duration-300" />
+          <img 
+            src="/images/logo-negro.png" 
+            alt="Logo" 
+            className="h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+          />
           <span 
             className="text-gray-900 text-lg font-medium transition-all duration-300 group-hover:scale-105"
             style={{ fontFamily: 'var(--font-archivo)', fontWeight: 500 }}
@@ -55,7 +58,11 @@ function ThemeSelector() {
         className="w-1/2 bg-black flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-900 group"
       >
         <div className="flex flex-col items-center gap-4">
-          <HiMoon className="w-16 h-16 text-white group-hover:scale-110 transition-transform duration-300" />
+          <img 
+            src="/images/logo-blanco.png" 
+            alt="Logo" 
+            className="h-20 w-auto group-hover:scale-110 transition-transform duration-300"
+          />
           <span 
             className="text-white text-lg font-medium transition-all duration-300 group-hover:scale-105"
             style={{ fontFamily: 'var(--font-archivo)', fontWeight: 500 }}

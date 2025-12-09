@@ -118,7 +118,91 @@ function Services() {
         </h2>
 
         {/* Cards de planes */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+        {/* Mobile: Slider horizontal */}
+        <div className="md:hidden">
+          <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth -mx-6 px-6">
+            <div className="flex gap-6" style={{ width: 'max-content' }}>
+              {t.plans.map((plan, index) => (
+                <div
+                  key={index}
+                  className={`
+                    relative 
+                    border 
+                    rounded-[2.5rem] 
+                    p-10 
+                    transition-all 
+                    duration-300 
+                    flex 
+                    flex-col 
+                    snap-center
+                    flex-shrink-0
+                    w-[calc(100vw-3rem)]
+                    ${
+                      isDarkMode 
+                        ? 'border-[#F6F3E8] bg-transparent' 
+                        : 'border-gray-900 bg-transparent'
+                    }
+                  `}
+                >
+                  {/* Título del plan */}
+                  <h3 className={`text-2xl lg:text-3xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                    {plan.name}
+                  </h3>
+
+                  {/* Precio */}
+                  <p className={`mb-6 text-lg transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
+                    {plan.price}
+                  </p>
+
+                  {/* Descripción */}
+                  <p className={`mb-8 leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                    {plan.description}
+                  </p>
+
+                  {/* Lista de características */}
+                  <ul className="space-y-4 mb-10 flex-grow">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-start gap-3">
+                        <span className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></span>
+                        <span className={`text-sm leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Botón */}
+                  <button 
+                    onClick={() => {
+                      // Mapear cada plan a su tipo correspondiente
+                      const planTypes = ['basico', 'ecommerce', 'aplicaciones']
+                      const planType = planTypes[index]
+                      navigate(`/services?plan=${planType}`)
+                    }}
+                    className={`
+                      w-full
+                      px-8 
+                      py-4 
+                      rounded-xl
+                      font-medium 
+                      transition-all 
+                      duration-200
+                      text-base
+                      mt-auto
+                      ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                    `} 
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+                  >
+                    {t.buttonText}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: Grid normal */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
           {t.plans.map((plan, index) => (
             <div
               key={index}
