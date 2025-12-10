@@ -30,7 +30,7 @@ function Hero() {
       ref={ref}
       className={`
         snap-start snap-always
-        min-h-screen flex items-center justify-center py-32
+        min-h-screen flex items-center justify-center py-12 md:py-32
         transition-colors duration-300
         transform-gpu
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -41,7 +41,7 @@ function Hero() {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Título principal - Headline grande con buen espaciado entre líneas */}
-          <h1 className={`text-5xl md:text-6xl lg:text-7xl font-medium mb-8 leading-[1.2] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
+          <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-medium mb-8 leading-[1.2] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
             {t.title}
           </h1>
           

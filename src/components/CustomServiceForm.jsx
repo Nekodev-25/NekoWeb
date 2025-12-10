@@ -156,7 +156,7 @@ function CustomServiceForm({ services = [] }) {
                     ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                     : 'border-gray-900 focus:border-gray-600 text-gray-900'
                 }`}
-                style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
               />
             </div>
 
@@ -173,7 +173,7 @@ function CustomServiceForm({ services = [] }) {
                     ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                     : 'border-gray-900 focus:border-gray-600 text-gray-900'
                 }`}
-                style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
               ></textarea>
             </div>
 
@@ -184,7 +184,7 @@ function CustomServiceForm({ services = [] }) {
                 className={`
                   px-8 
                   py-3 
-                  rounded-lg
+                  rounded-full
                   font-medium 
                   transition-colors 
                   duration-200

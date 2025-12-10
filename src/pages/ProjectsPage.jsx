@@ -8,6 +8,7 @@ function ProjectsPage() {
   const translations = {
     es: {
       title: 'Proyectos',
+      viewProject: 'Ver proyecto',
       projects: [
         {
           id: 1,
@@ -37,6 +38,7 @@ function ProjectsPage() {
     },
     en: {
       title: 'Projects',
+      viewProject: 'View project',
       projects: [
         {
           id: 1,
@@ -129,15 +131,20 @@ function ProjectsPage() {
                 {project.name}
               </h3>
               
-              {/* Rectángulo pequeño gris claro (placeholder de descripción) */}
-              <div 
-                className={`
-                  w-full 
-                  h-6 
-                  transition-colors duration-300
-                  ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}
-                `}
-              ></div>
+              {/* Botón Ver proyecto */}
+              <button className={`
+                px-6 
+                py-3 
+                rounded-full 
+                font-medium 
+                transition-colors 
+                duration-200
+                text-sm
+                self-start
+                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+              `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.viewProject}
+              </button>
             </div>
           ))}
         </div>

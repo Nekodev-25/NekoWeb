@@ -77,6 +77,7 @@ function Projects() {
       location: 'Buenos Aires, Argentina',
       tagline: 'Creamos para todo el mundo',
       contactButton: 'Contactanos',
+      viewProject: 'Ver proyecto',
       projects: [
         {
           id: 1,
@@ -139,6 +140,7 @@ function Projects() {
       location: 'Buenos Aires, Argentina',
       tagline: 'We create for everyone',
       contactButton: 'Contact us',
+      viewProject: 'View project',
       projects: [
         {
           id: 1,
@@ -204,7 +206,7 @@ function Projects() {
       ref={ref}
       className={`
         snap-start snap-always
-        min-h-screen py-32 relative
+        min-h-screen py-12 md:py-32 relative
         transition-colors duration-300
         transform-gpu
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -222,7 +224,7 @@ function Projects() {
               : 'opacity-0 -translate-x-20'
           }`}
         >
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[120px] font-black leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
             {t.title}
           </h2>
         </div>
@@ -438,14 +440,19 @@ function Projects() {
                     {/* Línea separadora */}
                     <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
                     
-                    {/* Tag/Descripción placeholder */}
-                    <div className={`
-                      w-24 
-                      h-6 
-                      rounded
-                      transition-colors duration-300
-                      ${isDarkMode ? 'bg-white' : 'bg-gray-200'}
-                    `}></div>
+                    {/* Botón Ver proyecto */}
+                    <button className={`
+                      px-6 
+                      py-3 
+                      rounded-full 
+                      font-medium 
+                      transition-colors 
+                      duration-200
+                      text-sm
+                      ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                    `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                      {t.viewProject}
+                    </button>
                   </div>
                 ))}
               </div>
@@ -508,14 +515,19 @@ function Projects() {
                   {/* Línea separadora */}
                   <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
                   
-                  {/* Tag/Descripción placeholder */}
-                  <div className={`
-                    w-24 
-                    h-6 
-                    rounded
-                    transition-colors duration-300
-                    ${isDarkMode ? 'bg-white' : 'bg-gray-200'}
-                  `}></div>
+                  {/* Botón Ver proyecto */}
+                  <button className={`
+                    px-6 
+                    py-3 
+                    rounded-full 
+                    font-medium 
+                    transition-colors 
+                    duration-200
+                    text-sm
+                    ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                  `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                    {t.viewProject}
+                  </button>
                 </div>
               ))}
             </div>

@@ -8,6 +8,7 @@ import ServicesPage from './pages/ServicesPage'
 import CaseStudiesPage from './pages/CaseStudiesPage'
 import ProjectsPage from './pages/ProjectsPage'
 import PlansPage from './pages/PlansPage'
+import FAQsPage from './pages/FAQsPage'
 import ThemeSelector from './components/ThemeSelector'
 import { useTheme } from './context/ThemeContext'
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/case-studies" element={<CaseStudiesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/plans" element={<PlansPage />} />
+          <Route path="/faqs" element={<FAQsPage />} />
         </Routes>
         <Footer />
       </div>

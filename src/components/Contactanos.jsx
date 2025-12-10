@@ -68,7 +68,7 @@ function Contactanos() {
       ref={ref}
       className={`
         snap-start snap-always
-        min-h-screen py-32
+        min-h-screen py-12 md:py-32
         transition-colors duration-300
         transform-gpu
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -79,7 +79,7 @@ function Contactanos() {
       <div className="container mx-auto px-6">
         {/* Título grande arriba - en su propio contenedor */}
         <div className="mb-12 lg:mb-16">
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[120px] font-black leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
             {t.title}
           </h2>
         </div>
@@ -198,7 +198,7 @@ function Contactanos() {
                       ? 'text-white placeholder-gray-400' 
                       : 'text-gray-900'
                   }`}
-                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+                  style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
                 />
               </div>
 
@@ -215,7 +215,7 @@ function Contactanos() {
                       ? 'text-white placeholder-gray-400' 
                       : 'text-gray-900'
                   }`}
-                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
+                  style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
                 ></textarea>
               </div>
 
@@ -226,7 +226,7 @@ function Contactanos() {
                   className={`
                     px-8 
                     py-3 
-                    rounded-lg
+                    rounded-full
                     font-medium 
                     transition-colors 
                     duration-200

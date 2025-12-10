@@ -218,9 +218,10 @@ function AboutPage() {
           <div className="max-w-7xl mx-auto relative">
             {/* Contenedor principal con línea en el medio */}
             <div className="relative" style={{ paddingTop: '120px', paddingBottom: '120px' }}>
-              {/* Línea horizontal del timeline - centrada verticalmente */}
+              {/* Línea horizontal del timeline - centrada verticalmente (solo desktop) */}
               <div 
                 className={`
+                  hidden md:block
                   absolute 
                   top-1/2 
                   left-0 
@@ -242,7 +243,7 @@ function AboutPage() {
                       className={`
                         text-6xl md:text-7xl lg:text-8xl 
                         font-black 
-                        mb-8
+                        mb-0 md:mb-8
                         transition-colors duration-300
                         ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                       `} 
@@ -251,10 +252,11 @@ function AboutPage() {
                       {step.number}
                     </div>
                     
-                    {/* Círculo outline centrado en la línea - posicionado absolutamente */}
+                    {/* Círculo outline - solo en desktop, centrado en la línea */}
                     <div 
                       className={`
-                        absolute 
+                        hidden md:block
+                        absolute
                         top-1/2
                         left-1/2
                         -translate-x-1/2
@@ -269,8 +271,8 @@ function AboutPage() {
                       `}
                     ></div>
                     
-                    {/* Contenido debajo del círculo */}
-                    <div className="mt-12 md:mt-16 text-center">
+                    {/* Contenido debajo del número/círculo */}
+                    <div className="mt-4 md:mt-16 text-center">
                       {/* Título del paso */}
                       <h3 
                         className={`

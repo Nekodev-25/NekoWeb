@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { Link } from 'react-router-dom'
 import { FaLinkedin, FaInstagram } from 'react-icons/fa'
 import { FaTiktok } from 'react-icons/fa6'
 
@@ -19,6 +20,7 @@ function Footer() {
         phone: 'Tel.: +54 11-3283-8365',
       },
       bottomText: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      faqs: 'FAQs',
       social: {
         linkedin: 'LinkedIn',
         instagram: 'Instagram',
@@ -36,6 +38,7 @@ function Footer() {
         phone: 'Tel.: +54 11-3283-8365',
       },
       bottomText: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      faqs: 'FAQs',
       social: {
         linkedin: 'LinkedIn',
         instagram: 'Instagram',
@@ -79,12 +82,21 @@ function Footer() {
         {/* Línea separadora */}
         <div className={`w-full h-px mb-8 transition-colors duration-300 ${isDarkMode ? 'bg-[#2D3748]' : 'bg-[#F6F3E8]'}`}></div>
 
-        {/* Sección inferior - Texto e iconos de redes sociales */}
+        {/* Sección inferior - Texto, FAQs e iconos de redes sociales */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          {/* Texto a la izquierda */}
-          <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#2D3748]' : 'text-[#F6F3E8]'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-            {t.bottomText}
-          </p>
+          {/* Texto y FAQs a la izquierda */}
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#2D3748]' : 'text-[#F6F3E8]'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              {t.bottomText}
+            </p>
+            <Link
+              to="/faqs"
+              className={`text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#2D3748]' : 'text-[#F6F3E8]'}`}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+            >
+              {t.faqs}
+            </Link>
+          </div>
 
           {/* Iconos de redes sociales a la derecha */}
           <div className="flex items-center gap-4">
@@ -92,51 +104,39 @@ function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group w-10 h-10 border-2 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                isDarkMode 
-                  ? 'border-[#2D3748] hover:bg-[#2D3748]' 
-                  : 'border-[#F6F3E8] hover:bg-[#F6F3E8]'
-              }`}
+              className="group transition-opacity duration-200 hover:opacity-70"
               aria-label={t.social.linkedin}
             >
-              <FaLinkedin className={`w-5 h-5 transition-colors ${
+              <FaLinkedin className={`w-6 h-6 transition-colors ${
                 isDarkMode 
-                  ? 'text-[#2D3748] group-hover:text-[#F8F7F0]' 
-                  : 'text-[#F6F3E8] group-hover:text-black'
+                  ? 'text-[#2D3748]' 
+                  : 'text-[#F6F3E8]'
               }`} />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group w-10 h-10 border-2 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                isDarkMode 
-                  ? 'border-[#2D3748] hover:bg-[#2D3748]' 
-                  : 'border-[#F6F3E8] hover:bg-[#F6F3E8]'
-              }`}
+              className="group transition-opacity duration-200 hover:opacity-70"
               aria-label={t.social.instagram}
             >
-              <FaInstagram className={`w-5 h-5 transition-colors ${
+              <FaInstagram className={`w-6 h-6 transition-colors ${
                 isDarkMode 
-                  ? 'text-[#2D3748] group-hover:text-[#F8F7F0]' 
-                  : 'text-[#F6F3E8] group-hover:text-black'
+                  ? 'text-[#2D3748]' 
+                  : 'text-[#F6F3E8]'
               }`} />
             </a>
             <a
               href="https://tiktok.com"
               target="_blank"
               rel="noopener noreferrer"
-              className={`group w-10 h-10 border-2 rounded-lg flex items-center justify-center transition-all duration-200 ${
-                isDarkMode 
-                  ? 'border-[#2D3748] hover:bg-[#2D3748]' 
-                  : 'border-[#F6F3E8] hover:bg-[#F6F3E8]'
-              }`}
+              className="group transition-opacity duration-200 hover:opacity-70"
               aria-label={t.social.tiktok}
             >
-              <FaTiktok className={`w-5 h-5 transition-colors ${
+              <FaTiktok className={`w-6 h-6 transition-colors ${
                 isDarkMode 
-                  ? 'text-[#2D3748] group-hover:text-[#F8F7F0]' 
-                  : 'text-[#F6F3E8] group-hover:text-black'
+                  ? 'text-[#2D3748]' 
+                  : 'text-[#F6F3E8]'
               }`} />
             </a>
           </div>
