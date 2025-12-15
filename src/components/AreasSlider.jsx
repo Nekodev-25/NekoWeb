@@ -32,45 +32,45 @@ function AreasSlider() {
       areas: [
         {
           id: 1,
-          title: 'DESARROLLO',
-          location: 'Buenos Aires, Argentina',
-          tagline: 'Creamos soluciones tecnológicas innovadoras',
-          character: 'programador', // Gatito programador
-        },
-        {
-          id: 2,
           title: 'DISEÑO',
           location: 'Buenos Aires, Argentina',
           tagline: 'Diseñamos experiencias únicas y memorables',
-          character: 'diseñador', // Gatito diseñador
+          characterKey: 'designer',
+        },
+        {
+          id: 2,
+          title: 'DESARROLLO',
+          location: 'Buenos Aires, Argentina',
+          tagline: 'Creamos soluciones tecnológicas innovadoras',
+          characterKey: 'dev',
         },
         {
           id: 3,
-          title: 'MARKETING',
+          title: 'DIRECCIÓN DE PROYECTOS',
           location: 'Buenos Aires, Argentina',
-          tagline: 'Potenciamos tu marca con estrategias creativas',
-          character: 'marketing', // Gatito marketing
+          tagline: 'Llevamos adelante tus proyectos con seriedad y estrategia',
+          characterKey: 'boss',
         },
         {
           id: 4,
-          title: 'INNOVACIÓN',
+          title: 'REDES SOCIALES',
           location: 'Buenos Aires, Argentina',
-          tagline: 'Transformamos ideas en realidad digital',
-          character: 'programador2', // Segunda imagen diferente
+          tagline: 'Gestionamos tu comunidad y presencia en redes',
+          characterKey: 'social',
         },
         {
           id: 5,
-          title: 'TECNOLOGÍA',
+          title: 'UX / PRODUCTO',
           location: 'Buenos Aires, Argentina',
-          tagline: 'Construimos el futuro con código y creatividad',
-          character: 'diseñador2', // Segunda imagen diferente
+          tagline: 'Diseñamos experiencias digitales centradas en las personas',
+          characterKey: 'ux',
         },
         {
           id: 6,
-          title: 'EQUIPO',
+          title: 'MARKETING',
           location: 'Buenos Aires, Argentina',
-          tagline: 'Trabajamos juntos para alcanzar grandes resultados',
-          character: 'marketing2', // Segunda imagen diferente
+          tagline: 'Potenciamos tu marca con estrategias creativas',
+          characterKey: 'marketing',
         },
       ],
     },
@@ -81,51 +81,89 @@ function AreasSlider() {
       areas: [
         {
           id: 1,
-          title: 'DEVELOPMENT',
-          location: 'Buenos Aires, Argentina',
-          tagline: 'We create innovative technological solutions',
-          character: 'programmer',
-        },
-        {
-          id: 2,
           title: 'DESIGN',
           location: 'Buenos Aires, Argentina',
           tagline: 'We design unique and memorable experiences',
-          character: 'designer',
+          characterKey: 'designer',
+        },
+        {
+          id: 2,
+          title: 'DEVELOPMENT',
+          location: 'Buenos Aires, Argentina',
+          tagline: 'We create innovative technological solutions',
+          characterKey: 'dev',
         },
         {
           id: 3,
-          title: 'MARKETING',
+          title: 'PROJECT LEAD',
           location: 'Buenos Aires, Argentina',
-          tagline: 'We boost your brand with creative strategies',
-          character: 'marketing',
+          tagline: 'We lead your projects with strategy and responsibility',
+          characterKey: 'boss',
         },
         {
           id: 4,
-          title: 'INNOVATION',
+          title: 'SOCIAL MEDIA',
           location: 'Buenos Aires, Argentina',
-          tagline: 'We transform ideas into digital reality',
-          character: 'programmer2', // Segunda imagen diferente
+          tagline: 'We manage your community and social presence',
+          characterKey: 'social',
         },
         {
           id: 5,
-          title: 'TECHNOLOGY',
+          title: 'UX / PRODUCT',
           location: 'Buenos Aires, Argentina',
-          tagline: 'We build the future with code and creativity',
-          character: 'designer2', // Segunda imagen diferente
+          tagline: 'We craft user-centered digital experiences',
+          characterKey: 'ux',
         },
         {
           id: 6,
-          title: 'TEAM',
+          title: 'MARKETING',
           location: 'Buenos Aires, Argentina',
-          tagline: 'We work together to achieve great results',
-          character: 'marketing2', // Segunda imagen diferente
+          tagline: 'We boost your brand with creative strategies',
+          characterKey: 'marketing',
         },
       ],
     },
   }
 
+  const characterImages = {
+    dev: {
+      light: '/images/gatitos/dia/dev_dia-15.png',
+      dark: '/images/gatitos/noche/dev_noche-04.png',
+    },
+    designer: {
+      light: '/images/gatitos/dia/diseñador_dia-12.png',
+      dark: '/images/gatitos/noche/diseñador_noche-08.png',
+    },
+    social: {
+      light: '/images/gatitos/dia/redes_dia-16.png',
+      dark: '/images/gatitos/noche/redes_noche-09.png',
+    },
+    ux: {
+      light: '/images/gatitos/dia/ux_dia-13.png',
+      dark: '/images/gatitos/noche/ux_noche-07.png',
+    },
+    marketing: {
+      light: '/images/gatitos/dia/marketing_dia-17.png',
+      dark: '/images/gatitos/noche/marketing_noche-10.png',
+    },
+    boss: {
+      light: '/images/gatitos/dia/Jefe-dia.png',
+      dark: '/images/gatitos/noche/Jefe.png',
+    },
+  }
+
   const t = translations[language]
+
+  const getCharacterOffset = (key) => {
+    // Base offset para que todos queden cerca de la línea
+    const baseOffset = isMobile ? 18 : 22
+
+    // Ajustes finos por gatito
+    if (key === 'dev') return baseOffset - 2 // Dev un poco más arriba (no toca la línea)
+    if (key === 'marketing' || key === 'social' || key === 'ux') return baseOffset + 4 // Segundo slide más pegado a la línea
+
+    return baseOffset
+  }
 
   // Para desktop: 2 slides de 3 imágenes cada uno (0-2, 3-5)
   // Para mobile: 6 slides de 1 imagen cada uno
@@ -225,7 +263,7 @@ function AreasSlider() {
       ref={ref}
       className={`
         snap-start snap-always
-        min-h-screen py-12 md:py-32 overflow-x-hidden
+        min-h-0 md:min-h-screen py-12 md:py-32 pb-1.5 md:pb-32 overflow-x-hidden
         transition-colors duration-300
         transform-gpu
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
@@ -235,7 +273,7 @@ function AreasSlider() {
     >
       <div className="container mx-auto px-6">
         {/* Header con título - Desktop: lado izquierdo, Mobile: arriba cerca del slider */}
-        <div className="mb-4 lg:mb-16">
+        <div className="mb-2 lg:mb-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             {/* Columna izquierda - Título */}
             <div>
@@ -281,24 +319,28 @@ function AreasSlider() {
                         className="flex-shrink-0 flex items-center justify-center"
                         style={{ width: '100vw', scrollSnapAlign: 'center', scrollSnapStop: 'always' }}
                       >
-                        {/* Área gris grande arriba - imagen cuadrada más grande (207px), sin bordes redondeados */}
-                        <div className="w-[207px] h-[207px] aspect-square bg-gray-200 overflow-hidden relative z-20 shadow-lg">
+                        {/* Contenedor del gatito (sin fondo gris) */}
+                        <div
+                          className={`
+                            w-[207px]
+                            h-[207px]
+                            flex
+                            items-end
+                            justify-center
+                            overflow-visible
+                            relative
+                            z-20
+                          `}
+                          style={{ transform: `translateY(${getCharacterOffset(area.characterKey)}px)` }}
+                        >
                           <img
                             src={
-                              area.character === 'programador' || area.character === 'programmer' 
-                                ? 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop'
-                                : area.character === 'programador2' || area.character === 'programmer2'
-                                ? 'https://images.unsplash.com/photo-1574158622682-e40e6988106f?w=400&h=400&fit=crop'
-                                : area.character === 'diseñador' || area.character === 'designer'
-                                ? 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop'
-                                : area.character === 'diseñador2' || area.character === 'designer2'
-                                ? 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop'
-                                : area.character === 'marketing2'
-                                ? 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=400&fit=crop'
-                                : 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop'
+                              characterImages[area.characterKey]
+                                ? (isDarkMode ? characterImages[area.characterKey].dark : characterImages[area.characterKey].light)
+                                : ''
                             }
-                            alt={area.character}
-                            className="w-full h-full object-cover"
+                            alt={area.title}
+                            className="w-full h-full object-contain max-w-full max-h-full"
                           />
                         </div>
                       </div>
@@ -321,24 +363,29 @@ function AreasSlider() {
                       className="flex justify-center"
                     >
                       <div className="relative">
-                        {/* Área gris grande arriba - imagen cuadrada más grande (207px), sin bordes redondeados */}
-                        <div className="w-[207px] h-[207px] aspect-square bg-gray-200 overflow-hidden relative z-20 shadow-lg mx-auto">
+                        {/* Contenedor del gatito (sin fondo gris) */}
+                        <div
+                          className={`
+                            w-[207px]
+                            h-[207px]
+                            flex
+                            items-end
+                            justify-center
+                            overflow-visible
+                            relative
+                            z-20
+                            mx-auto
+                          `}
+                          style={{ transform: `translateY(${getCharacterOffset(area.characterKey)}px)` }}
+                        >
                           <img
                             src={
-                              area.character === 'programador' || area.character === 'programmer' 
-                                ? 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=400&fit=crop'
-                                : area.character === 'programador2' || area.character === 'programmer2'
-                                ? 'https://images.unsplash.com/photo-1574158622682-e40e6988106f?w=400&h=400&fit=crop'
-                                : area.character === 'diseñador' || area.character === 'designer'
-                                ? 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop'
-                                : area.character === 'diseñador2' || area.character === 'designer2'
-                                ? 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=400&fit=crop'
-                                : area.character === 'marketing2'
-                                ? 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=400&fit=crop'
-                                : 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop'
+                              characterImages[area.characterKey]
+                                ? (isDarkMode ? characterImages[area.characterKey].dark : characterImages[area.characterKey].light)
+                                : ''
                             }
-                            alt={area.character}
-                            className="w-full h-full object-cover"
+                            alt={area.title}
+                            className="w-full h-full object-contain max-w-full max-h-full"
                           />
                         </div>
                       </div>
@@ -363,7 +410,7 @@ function AreasSlider() {
           ></div>
           
           {/* Texto debajo de la línea - centrado con fade */}
-          <div className="relative z-10 mt-8" style={{ minHeight: '80px' }}>
+          <div className="relative z-10 mt-2 md:mt-4" style={{ minHeight: '80px' }}>
             {isMobile ? (
               // Mobile: cada área individual con fade
               t.areas.map((area, index) => (
@@ -447,8 +494,8 @@ function AreasSlider() {
         </div>
 
 
-        {/* Mobile: Descripción y botón debajo del slider */}
-        <div className="lg:hidden mt-8">
+        {/* Mobile: Descripción y botón debajo del slider - OCULTO EN MOBILE */}
+        <div className="hidden">
           <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
             {t.description}
           </p>

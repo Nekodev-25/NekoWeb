@@ -45,7 +45,7 @@ function AboutUs() {
       ref={ref}
       className={`
         snap-start snap-always
-        min-h-screen py-12 md:py-32
+        min-h-0 md:min-h-screen pt-4 md:pt-32 pb-12 md:pb-32
         transition-colors duration-300
         transform-gpu
         ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}

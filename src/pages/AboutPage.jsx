@@ -177,7 +177,18 @@ function AboutPage() {
         </div>
 
         {/* Sección Proceso de Trabajo */}
-        <div className="mt-32">
+        <div className="mt-32 relative">
+          {/* Gatito dev - esquina superior derecha */}
+          <div className="hidden md:block absolute right-6 top-0 lg:right-10">
+            <div className="w-[160px] h-[160px] lg:w-[192px] lg:h-[192px] flex items-center justify-center">
+              <img
+                src={isDarkMode ? '/images/gatitos/noche/dev_noche-04.png' : '/images/gatitos/dia/dev_dia-15.png'}
+                alt="Gatito dev"
+                className="w-full h-full object-contain max-w-full max-h-full"
+              />
+            </div>
+          </div>
+
           {/* Título y texto introductorio */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 md:mb-32 max-w-6xl mx-auto">
             {/* Título a la izquierda */}

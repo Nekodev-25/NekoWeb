@@ -87,14 +87,15 @@ function Contactanos() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Columna Izquierda - Ilustración del gato e información de contacto (solo desktop) */}
           <div className="hidden lg:flex lg:col-span-1 flex-col justify-end">
-            {/* Imagen del gatito callcenter */}
-            <div className="w-[200px] h-[200px] mb-4">
-              <img 
-                src="/images/gatito-callcenter.png" 
-                alt="Gatito callcenter" 
-                className="w-full h-full object-contain"
-              />
-            </div>
+          {/* Imagen del gatito callcenter */}
+          <div className="w-[200px] h-[200px] mb-4 flex items-center justify-center overflow-hidden">
+            <img 
+              src={isDarkMode ? '/images/gatitos/noche/contacto_noche-05.png' : '/images/gatitos/dia/contacto_dia-11.png'} 
+              alt="Gatito callcenter" 
+              className="w-[200px] h-[200px] object-contain"
+              style={{ width: '200px', height: '200px', objectFit: 'contain' }}
+            />
+          </div>
 
             {/* Información de contacto */}
             <div className="space-y-1 text-left">
@@ -244,11 +245,12 @@ function Contactanos() {
         <div className="lg:hidden mt-12">
           <div className="flex flex-col items-center">
             {/* Imagen del gatito callcenter */}
-            <div className="w-[200px] h-[200px] mb-6">
+            <div className="w-[200px] h-[200px] mb-6 flex items-center justify-center overflow-hidden">
               <img 
-                src="/images/gatito-callcenter.png" 
+                src={isDarkMode ? '/images/gatitos/noche/contacto_noche-05.png' : '/images/gatitos/dia/contacto_dia-11.png'} 
                 alt="Gatito callcenter" 
-                className="w-full h-full object-contain"
+                className="w-[200px] h-[200px] object-contain"
+                style={{ width: '200px', height: '200px', objectFit: 'contain' }}
               />
             </div>
 

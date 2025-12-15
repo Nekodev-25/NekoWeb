@@ -62,22 +62,54 @@ function CustomServiceForm({ services = [] }) {
 
   return (
     <div className={`pt-16 border-t transition-colors duration-300 ${isDarkMode ? 'border-white' : 'border-gray-300'}`}>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-        {/* Columna izquierda - Texto con ancho limitado */}
-        <div className="space-y-8">
-          <div className="max-w-md">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        {/* Columna izquierda - Título, texto arriba y gatito/info abajo */}
+        <div className="flex flex-col min-h-[600px]">
+          {/* Título y texto descriptivo arriba */}
+          <div className="mb-12">
             <h3 className={`text-4xl md:text-5xl lg:text-6xl font-black text-left leading-tight mb-6 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900 }}>
               {t.customTitle}
             </h3>
             
-            <p className={`leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+            <p className={`leading-relaxed text-left max-w-md transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
               {t.customDescription}
             </p>
           </div>
+
+          {/* Gatito diseñador e información de contacto - abajo */}
+          <div className="mt-auto flex flex-col lg:flex-row lg:items-end gap-8">
+            {/* Gatito diseñador */}
+            <div className="mb-1">
+              <div className="w-[160px] h-[160px] flex items-end justify-start overflow-visible">
+                <img
+                  src={isDarkMode ? '/images/gatitos/noche/diseñador_noche-08.png' : '/images/gatitos/dia/diseñador_dia-12.png'}
+                  alt="Gatito diseñador"
+                  className="w-full h-full object-contain"
+                  style={{ maxWidth: '160px', maxHeight: '160px', objectFit: 'contain' }}
+                />
+              </div>
+            </div>
+
+            {/* Información de contacto - debajo del gatito */}
+            <div className="space-y-1 text-left" style={{ marginTop: '3px' }}>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.location}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.tagline}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.phone}
+              </p>
+              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                {t.footer.email}
+              </p>
+            </div>
+          </div>
         </div>
 
-        {/* Columna derecha - Formulario (más abajo) */}
-        <div className="lg:mt-48 lg:pt-12">
+        {/* Columna derecha - Formulario posicionado entre título/texto y gatito */}
+        <div className="lg:pt-24 lg:mt-8">
           {/* Formulario */}
           <form className="space-y-8">
             {/* Nombre y Apellido en fila */}
@@ -195,24 +227,6 @@ function CustomServiceForm({ services = [] }) {
               </button>
             </div>
           </form>
-        </div>
-      </div>
-
-      {/* Información de contacto - Esquina inferior izquierda del contenedor */}
-      <div className="mt-16 lg:mt-24">
-        <div className="space-y-1 text-left">
-          <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-            {t.footer.location}
-          </p>
-          <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-            {t.footer.tagline}
-          </p>
-          <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-            {t.footer.phone}
-          </p>
-          <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
-            {t.footer.email}
-          </p>
         </div>
       </div>
     </div>

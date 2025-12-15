@@ -366,7 +366,18 @@ function Projects() {
               </div>
 
               {/* Footer con información de contacto */}
-              <div className="mt-auto">
+              <div className="mt-auto flex flex-col items-start">
+                {/* Gatito desarrollador por encima del bloque de contacto (solo desktop) */}
+                <div className="hidden md:block mb-4">
+                  <div className="w-[128px] h-[128px] lg:w-[160px] lg:h-[160px] flex items-center justify-center">
+                    <img
+                      src={isDarkMode ? '/images/gatitos/noche/dev_noche-04.png' : '/images/gatitos/dia/dev_dia-15.png'}
+                      alt="Gatito desarrollador"
+                      className="w-full h-full object-contain max-w-full max-h-full"
+                    />
+                  </div>
+                </div>
+
                 <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
                 <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
                 <a 

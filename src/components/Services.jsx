@@ -160,10 +160,23 @@ function Services() {
       style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
     >
       <div className="container mx-auto px-6">
-        {/* Título principal */}
-        <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black text-left mb-16 leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
-          {t.title}
-        </h2>
+        {/* Título principal + gatito jefe a la derecha */}
+        <div className="flex items-center gap-3 md:gap-4 mb-16">
+          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black text-left leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+            {t.title}
+          </h2>
+
+          {/* Gatito jefe */}
+          <div className="hidden md:block flex-shrink-0">
+            <div className="w-[160px] h-[160px] lg:w-[192px] lg:h-[192px] xl:w-[224px] xl:h-[224px] flex items-center justify-center">
+              <img
+                src={isDarkMode ? '/images/gatitos/noche/Jefe.png' : '/images/gatitos/dia/Jefe-dia.png'}
+                alt="Gatito jefe"
+                className="w-full h-full object-contain max-w-full max-h-full"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Cards de planes */}
         {/* Mobile: Slider horizontal */}
