@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -238,7 +239,7 @@ function Projects() {
               className={`relative transition-colors pb-2 group ${
                 isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
               } ${activeFilter === 'all' ? 'font-medium' : ''}`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'all' ? 500 : 400 }}
             >
               {t.filters.all}
               <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
@@ -304,7 +305,7 @@ function Projects() {
                       className={`relative text-left transition-colors pb-2 group ${
                         isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
                       } ${activeFilter === 'all' ? 'font-medium' : ''}`}
-                      style={{ fontFamily: 'var(--font-archivo)', fontWeight: activeFilter === 'all' ? 500 : 300 }}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'all' ? 500 : 400 }}
                     >
                       {t.filters.all}
                       <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
@@ -378,8 +379,8 @@ function Projects() {
                   </div>
                 </div>
 
-                <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
-                <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
+                <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.location}</p>
+                <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.tagline}</p>
                 <a 
                   href="#contact"
                   className={`
@@ -388,13 +389,14 @@ function Projects() {
                     py-3 
                     rounded-full 
                     font-medium 
-                    transition-colors 
+                    transition-all 
                     duration-200
                     text-sm
                     text-center
-                    ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                    border-2
+                    ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                   `} 
-                  style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
                 >
                   {t.contactButton}
                 </a>
@@ -444,26 +446,31 @@ function Projects() {
                     </div>
                     
                     {/* Nombre del proyecto */}
-                    <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                    <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                       {project.name}
                     </h3>
                     
                     {/* Línea separadora */}
-                    <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
+                    <div className={`w-full h-px mb-6 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
                     
                     {/* Botón Ver proyecto */}
-                    <button className={`
-                      px-6 
-                      py-3 
-                      rounded-full 
-                      font-medium 
-                      transition-colors 
-                      duration-200
-                      text-sm
-                      ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-                    `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                    <Link 
+                      to={`/project/${project.id}`}
+                      className={`
+                        px-6 
+                        py-3 
+                        rounded-full 
+                        font-medium 
+                        transition-all 
+                        duration-200
+                        text-sm
+                        border-2
+                        ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
+                      `} 
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+                    >
                       {t.viewProject}
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -519,26 +526,31 @@ function Projects() {
                   </div>
                   
                   {/* Nombre del proyecto */}
-                  <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <h3 className={`font-medium mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {project.name}
                   </h3>
                   
                   {/* Línea separadora */}
-                  <div className={`w-full h-px mb-3 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
+                  <div className={`w-full h-px mb-6 transition-colors duration-300 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></div>
                   
                   {/* Botón Ver proyecto */}
-                  <button className={`
-                    px-6 
-                    py-3 
-                    rounded-full 
-                    font-medium 
-                    transition-colors 
-                    duration-200
-                    text-sm
-                    ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-                  `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <Link 
+                    to={`/project/${project.id}`}
+                    className={`
+                      px-6 
+                      py-3 
+                      rounded-full 
+                      font-medium 
+                      transition-all 
+                      duration-200
+                      text-sm
+                      border-2
+                      ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
+                    `} 
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+                  >
                     {t.viewProject}
-                  </button>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -546,8 +558,8 @@ function Projects() {
 
           {/* Footer con información de contacto */}
           <div className="mt-12">
-            <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.location}</p>
-            <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>{t.tagline}</p>
+            <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.location}</p>
+            <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.tagline}</p>
             <a 
               href="#contact"
               className={`
@@ -562,7 +574,7 @@ function Projects() {
                 text-center
                 ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
               `} 
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
             >
               {t.contactButton}
             </a>

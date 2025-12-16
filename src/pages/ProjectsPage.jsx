@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 
@@ -37,7 +38,6 @@ function ProjectsPage() {
       ],
       customSection: {
         title: '¿Necesitas algo personalizado?',
-        description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
         formLabels: {
           name: 'NOMBRE',
           lastName: 'APELLIDO',
@@ -56,8 +56,8 @@ function ProjectsPage() {
         footer: {
           location: 'Buenos Aires, Argentina',
           tagline: 'Creamos para todo el mundo',
-          phone: 'Tel: +54 11-3283-8366',
-          email: 'Mail: infonakodev@gmail.com',
+          phone: 'Tel: +54 11 6972-9914',
+          email: 'Mail: infonekodev@gmail.com',
         },
       },
     },
@@ -92,7 +92,6 @@ function ProjectsPage() {
       ],
       customSection: {
         title: 'Do you need something personalized?',
-        description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
         formLabels: {
           name: 'NAME',
           lastName: 'LAST NAME',
@@ -111,8 +110,8 @@ function ProjectsPage() {
         footer: {
           location: 'Buenos Aires, Argentina',
           tagline: 'We create for everyone',
-          phone: 'Tel: +54 11-3283-8366',
-          email: 'Mail: infonakodev@gmail.com',
+          phone: 'Tel: +54 11 6972-9914',
+          email: 'Mail: infonekodev@gmail.com',
         },
       },
     },
@@ -182,19 +181,24 @@ function ProjectsPage() {
               </h3>
               
               {/* Botón Ver proyecto */}
-              <button className={`
-                px-6 
-                py-3 
-                rounded-full 
-                font-medium 
-                transition-colors 
-                duration-200
-                text-sm
-                self-start
-                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-              `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              <Link 
+                to={`/project/${project.id}`}
+                className={`
+                  px-6 
+                  py-3 
+                  rounded-full 
+                  font-medium 
+                  transition-all 
+                  duration-200
+                  text-sm
+                  self-start
+                  border-2
+                  ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
+                `} 
+                style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+              >
                 {t.viewProject}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -204,8 +208,8 @@ function ProjectsPage() {
       <section className={`py-16 md:py-24 transition-colors duration-300 ${isDarkMode ? 'bg-black' : 'bg-[#F6F3E8]'}`}>
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            {/* Columna izquierda - Título arriba y gatito/info abajo */}
-            <div className="flex flex-col min-h-[600px]">
+            {/* Columna izquierda - Título arriba y gatito/info abajo (solo desktop) */}
+            <div className="hidden lg:flex flex-col min-h-[600px]">
               {/* Título arriba */}
               <div className="mb-12">
                 <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black text-left leading-tight transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900 }}>
@@ -229,29 +233,46 @@ function ProjectsPage() {
 
                 {/* Información de contacto - debajo del gatito */}
                 <div className="space-y-1 text-left">
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {t.customSection.footer.location}
                   </p>
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {t.customSection.footer.tagline}
                   </p>
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <a 
+                    href="https://wa.me/541169729914" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
+                  >
                     {t.customSection.footer.phone}
-                  </p>
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  </a>
+                  <a 
+                    href="mailto:infonekodev@gmail.com"
+                    className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
+                  >
                     {t.customSection.footer.email}
-                  </p>
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* Columna derecha - Formulario con más espacio desde el título */}
+            {/* Mobile: Título arriba */}
+            <div className="lg:hidden mb-8">
+              <h2 className={`text-4xl md:text-5xl font-black text-left leading-tight transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900 }}>
+                {t.customSection.title}
+              </h2>
+            </div>
+
+            {/* Columna derecha - Formulario */}
             <div className="lg:pt-32 lg:mt-12">
               <form className="space-y-8">
                 {/* Nombre y Apellido en fila */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                    <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                       {t.customSection.formLabels.name}
                     </label>
                     <input
@@ -262,11 +283,11 @@ function ProjectsPage() {
                           ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                           : 'border-gray-900 focus:border-gray-600 text-gray-900'
                       }`}
-                      style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                     />
                   </div>
                   <div>
-                    <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                    <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                       {t.customSection.formLabels.lastName}
                     </label>
                     <input
@@ -277,14 +298,14 @@ function ProjectsPage() {
                           ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                           : 'border-gray-900 focus:border-gray-600 text-gray-900'
                       }`}
-                      style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                     />
                   </div>
                 </div>
 
                 {/* Servicio - Dropdown */}
                 <div>
-                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {t.customSection.formLabels.service}
                   </label>
                   <div className="relative">
@@ -294,7 +315,7 @@ function ProjectsPage() {
                           ? 'border-white focus:border-gray-300 text-white' 
                           : 'border-gray-900 focus:border-gray-600 text-gray-900'
                       }`}
-                      style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                     >
                       <option value="">{t.customSection.formPlaceholders.service}</option>
                       <option value="web-design">Web design</option>
@@ -311,7 +332,7 @@ function ProjectsPage() {
 
                 {/* Email */}
                 <div>
-                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {t.customSection.formLabels.email}
                   </label>
                   <input
@@ -322,13 +343,13 @@ function ProjectsPage() {
                         ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                         : 'border-gray-900 focus:border-gray-600 text-gray-900'
                     }`}
-                    style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                   />
                 </div>
 
                 {/* Consulta - Textarea */}
                 <div>
-                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <label className={`block text-xs uppercase mb-3 font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {t.customSection.formLabels.query}
                   </label>
                   <textarea
@@ -339,7 +360,7 @@ function ProjectsPage() {
                         ? 'border-white focus:border-gray-300 text-white placeholder-gray-400' 
                         : 'border-gray-900 focus:border-gray-600 text-gray-900'
                     }`}
-                    style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                   ></textarea>
                 </div>
 
@@ -352,15 +373,57 @@ function ProjectsPage() {
                       py-3 
                       rounded-full
                       font-medium 
-                      transition-colors 
+                      transition-all 
                       duration-200
                       text-sm
-                      ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                      border-2
+                      ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                     `} style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}>
-                    {t.customSection.submitButton}
-                  </button>
+                      {t.customSection.submitButton}
+                    </button>
                 </div>
               </form>
+            </div>
+
+            {/* Mobile: Gatito e información de contacto - centrados y debajo del formulario */}
+            <div className="lg:hidden mt-12 flex flex-col items-center">
+              {/* Gatito marketing */}
+              <div className="mb-4">
+                <div className="w-[160px] h-[160px] flex items-center justify-center">
+                  <img
+                    src={isDarkMode ? '/images/gatitos/noche/marketing_noche-10.png' : '/images/gatitos/dia/marketing_dia-17.png'}
+                    alt="Gatito marketing"
+                    className="w-full h-full object-contain"
+                    style={{ maxWidth: '160px', maxHeight: '160px', objectFit: 'contain' }}
+                  />
+                </div>
+              </div>
+
+              {/* Información de contacto - centrada */}
+              <div className="space-y-1 text-center">
+                <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
+                  {t.customSection.footer.location}
+                </p>
+                <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
+                  {t.customSection.footer.tagline}
+                </p>
+                <a 
+                  href="https://wa.me/541169729914" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
+                >
+                  {t.customSection.footer.phone}
+                </a>
+                <a 
+                  href="mailto:infonekodev@gmail.com"
+                  className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
+                >
+                  {t.customSection.footer.email}
+                </a>
+              </div>
             </div>
           </div>
         </div>

@@ -10,29 +10,33 @@ function AboutUs() {
   const translations = {
     es: {
       title: 'Nosotros',
-      description: 'Somos que lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem i',
+      description: 'Somos un equipo joven y apasionado por la tecnología y el diseño. Creemos que cada proyecto es una oportunidad para crear algo extraordinario. Combinamos creatividad, estrategia y tecnología para dar vida a ideas que marcan la diferencia.',
       members: [
         {
           name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+          role: 'Desarrollador web full stack y co-fundador de Neko dev',
+          description: 'Estudió en Da Vinci y se especializa en crear sitios web innovadores e interactivos con diseños dinámicos y experiencias de usuario excepcionales.',
         },
         {
-          name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+          name: 'Luna Bianchi',
+          role: 'Diseñadora gráfica y co-fundadora de Neko dev',
+          description: 'Estudiante de la UBA apasionada por el diseño. Busca constantemente crecer como diseñadora, creando piezas innovadoras y cautivadoras que conecten con las audiencias.',
         },
       ],
     },
     en: {
       title: 'About Us',
-      description: 'We are that lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem i',
+      description: 'We are a young team passionate about technology and design. We believe that every project is an opportunity to create something extraordinary. We combine creativity, strategy and technology to bring ideas to life that make a difference.',
       members: [
         {
           name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+          role: 'Full stack web developer and co-founder of Neko dev',
+          description: 'Graduated from Da Vinci and specializes in creating innovative and interactive websites with dynamic designs and exceptional user experiences.',
         },
         {
-          name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum lorem ipsum lorem ipsummm lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsummmmmmmmmmmmm',
+          name: 'Luna Bianchi',
+          role: 'Graphic designer and co-founder of Neko dev',
+          description: 'UBA student passionate about design. Constantly seeking to grow as a designer, creating innovative and captivating pieces that connect with audiences.',
         },
       ],
     },
@@ -60,7 +64,7 @@ function AboutUs() {
         </h2>
 
         {/* Párrafo descriptivo */}
-        <p className={`mb-16 leading-relaxed text-left transition-colors duration-300 max-w-4xl ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+        <p className={`mb-16 leading-relaxed text-left transition-colors duration-300 max-w-4xl ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
           {t.description}
         </p>
 
@@ -80,12 +84,19 @@ function AboutUs() {
               </div>
 
               {/* Nombre */}
-              <h3 className={`text-xl font-bold mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 700 }}>
+              <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
                 {member.name}
               </h3>
 
+              {/* Rol */}
+              {member.role && (
+                <p className={`text-sm md:text-base mb-4 transition-colors duration-300 max-w-md ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                  {member.role}
+                </p>
+              )}
+
               {/* Descripción */}
-              <p className={`text-sm leading-relaxed transition-colors duration-300 max-w-md ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              <p className={`text-sm leading-relaxed transition-colors duration-300 max-w-md ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
                 {member.description}
               </p>
             </div>

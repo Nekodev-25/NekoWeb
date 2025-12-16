@@ -31,37 +31,85 @@ function PlansPage() {
       plans: {
         basico: [
           {
-            name: 'Plan básico',
-            price: 'Desde $2.000',
-            description: 'Lorem ipsum dolor sit amet',
-            features: [
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
+            name: 'Plan Básico',
+            price: 'Desde $180.000 ARS',
+            description: 'Ideal para tener presencia online profesional, clara y funcional.',
+            includes: [
+              'Landing page o sitio simple (1 página)',
+              'Diseño limpio y responsive',
+              'Estructura estándar (hero, info, contacto)',
+              'Formulario de contacto básico',
+              'Integración con WhatsApp o redes',
+              'SEO inicial (títulos y descripciones)',
             ],
+            excludes: [
+              'Panel administrable',
+              'Blog o contenido dinámico',
+              'E-commerce',
+              'Branding o identidad visual',
+            ],
+            addons: [
+              'Secciones extra',
+              'Animaciones',
+              'Copywriting',
+              'Hosting y dominio',
+              'Mantenimiento mensual',
+            ],
+            developmentTime: 'Desarrollo estimado: hasta 3 semanas',
+            recommendedFor: 'Recomendado para emprendedores y negocios que recién empiezan.',
           },
           {
-            name: 'Plan básico',
-            price: 'Desde $2.000',
-            description: 'Lorem ipsum dolor sit amet',
-            features: [
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
+            name: 'Plan Intermedio',
+            price: 'Desde $280.000 ARS',
+            description: 'Para negocios que necesitan una web más completa y profesional.',
+            includes: [
+              'Incluye todo el Plan Básico +',
+              'Sitio de 3 a 5 secciones',
+              'Diseño personalizado (no plantilla genérica)',
+              'Animaciones suaves y mejoras UX',
+              'Integración con Google Analytics',
+              'SEO intermedio',
+              'Hasta 2 revisiones de diseño',
             ],
+            excludes: [
+              'CMS avanzado',
+              'Funciones a medida',
+              'Branding completo',
+            ],
+            addons: [
+              'Blog administrable',
+              'Optimización de velocidad',
+              'Textos comerciales',
+              'Integraciones externas',
+            ],
+            developmentTime: '',
+            recommendedFor: 'Ideal para empresas pequeñas o profesionales independientes.',
           },
           {
-            name: 'Plan básico',
-            price: 'Desde $2.000',
-            description: 'Lorem ipsum dolor sit amet',
-            features: [
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
-              'Lorem ipsum dolor sit amet lorem ipsum',
+            name: 'Plan Premium',
+            price: 'Desde $420.000 ARS',
+            description: 'Una web pensada para convertir y crecer.',
+            includes: [
+              'Incluye todo el Plan Intermedio +',
+              'Secciones dinámicas administrables (CMS)',
+              'Blog o contenido editable',
+              'Optimización de velocidad',
+              'Copywriting base',
+              'Branding web básico',
+              'Integración con chat, pixel y tracking',
+              'Soporte técnico por 2 meses',
             ],
+            excludes: [
+              'Tienda online',
+              'Funcionalidades a medida complejas',
+            ],
+            addons: [
+              'Estrategia SEO avanzada',
+              'Automatizaciones',
+              'Integraciones personalizadas',
+            ],
+            developmentTime: '',
+            recommendedFor: 'Pensado para marcas que quieren presencia digital sólida.',
           },
         ],
         ecommerce: [
@@ -357,7 +405,7 @@ function PlansPage() {
                 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                 ${selectedPlanType === 'basico' ? 'font-medium' : ''}
               `}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: selectedPlanType === 'basico' ? 500 : 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: selectedPlanType === 'basico' ? 500 : 300 }}
             >
               {t.planTypes.basico}
               <div 
@@ -388,7 +436,7 @@ function PlansPage() {
                 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                 ${selectedPlanType === 'ecommerce' ? 'font-medium' : ''}
               `}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: selectedPlanType === 'ecommerce' ? 500 : 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: selectedPlanType === 'ecommerce' ? 500 : 300 }}
             >
               {t.planTypes.ecommerce}
               <div 
@@ -419,7 +467,7 @@ function PlansPage() {
                 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                 ${selectedPlanType === 'aplicaciones' ? 'font-medium' : ''}
               `}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: selectedPlanType === 'aplicaciones' ? 500 : 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: selectedPlanType === 'aplicaciones' ? 500 : 300 }}
             >
               {t.planTypes.aplicaciones}
               <div 
@@ -549,7 +597,8 @@ function PlansPage() {
                   duration-200
                   text-base
                   mt-auto
-                  ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                  border-2
+                  ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                 `} 
                 style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
               >
@@ -688,7 +737,8 @@ function PlansPage() {
                   duration-200
                   text-base
                   mt-auto
-                  ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                  border-2
+                  ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                 `} 
                 style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
               >

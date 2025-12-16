@@ -17,40 +17,49 @@ function Services() {
       title: 'Planes y servicios',
       plans: [
         {
-          name: 'Plan bondiola',
-          price: 'Desde $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'Web Básica / Institucional',
+          price: 'Desde $180.000',
+          forWho: 'Para quién es',
+          forWhoText: 'Emprendedores, profesionales y pequeños negocios que necesitan presencia online clara y confiable.',
+          whatOffers: 'Qué ofrece',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Sitio web profesional y responsive',
+            'Diseño limpio y moderno',
+            'Información clara de tu negocio',
+            'Contacto directo por WhatsApp o formulario',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal si',
+          idealForText: 'Querés mostrar quién sos, qué hacés y cómo contactarte, sin complejidad técnica.',
         },
         {
-          name: 'Plan ashe',
-          price: 'Desde $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'E-commerce',
+          price: 'Desde $650.000',
+          forWho: 'Para quién es',
+          forWhoText: 'Negocios que quieren vender productos o servicios online de forma automatizada.',
+          whatOffers: 'Qué ofrece',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Tienda online lista para vender',
+            'Pagos integrados',
+            'Gestión de productos y pedidos',
+            'Diseño optimizado para convertir ventas',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal si',
+          idealForText: 'Querés vender 24/7 y escalar tu negocio en internet.',
         },
         {
-          name: 'Plan tita',
-          price: 'Desde $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'Aplicaciones / SAAS',
+          price: 'Desde $2.200.000',
+          forWho: 'Para quién es',
+          forWhoText: 'Empresas, startups o proyectos que necesitan un sistema o plataforma a medida.',
+          whatOffers: 'Qué ofrece',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Desarrollo de aplicaciones web',
+            'Paneles, sistemas y plataformas personalizadas',
+            'Arquitectura escalable',
+            'Branding y experiencia de usuario profesional',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal si',
+          idealForText: 'Tenés una idea, proceso o negocio que necesita una solución digital propia.',
         },
       ],
       buttonText: 'Ver planes',
@@ -59,40 +68,49 @@ function Services() {
       title: 'Plans and services',
       plans: [
         {
-          name: 'Plan bondiola',
-          price: 'From $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'Basic / Institutional Web',
+          price: 'From $180.000',
+          forWho: 'For whom',
+          forWhoText: 'Entrepreneurs, professionals and small businesses that need a clear and reliable online presence.',
+          whatOffers: 'What it offers',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Professional and responsive website',
+            'Clean and modern design',
+            'Clear information about your business',
+            'Direct contact via WhatsApp or form',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal if',
+          idealForText: 'You want to show who you are, what you do and how to contact you, without technical complexity.',
         },
         {
-          name: 'Plan ashe',
-          price: 'From $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'E-commerce',
+          price: 'From $650.000',
+          forWho: 'For whom',
+          forWhoText: 'Businesses that want to sell products or services online in an automated way.',
+          whatOffers: 'What it offers',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Online store ready to sell',
+            'Integrated payments',
+            'Product and order management',
+            'Design optimized to convert sales',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal if',
+          idealForText: 'You want to sell 24/7 and scale your business online.',
         },
         {
-          name: 'Plan tita',
-          price: 'From $2.000',
-          description: 'Lorem ipsum dolor sit amet',
+          name: 'Applications / SAAS',
+          price: 'From $2.200.000',
+          forWho: 'For whom',
+          forWhoText: 'Companies, startups or projects that need a custom system or platform.',
+          whatOffers: 'What it offers',
           features: [
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
-            'Lorem ipsum dolor sit amet lorem ipsum',
+            'Web application development',
+            'Custom panels, systems and platforms',
+            'Scalable architecture',
+            'Professional branding and user experience',
           ],
-          hasIcon: false,
+          idealFor: 'Ideal if',
+          idealForText: 'You have an idea, process or business that needs its own digital solution.',
         },
       ],
       buttonText: 'View plans',
@@ -206,7 +224,7 @@ function Services() {
                   `}
                 >
                   {/* Título del plan */}
-                  <h3 className={`text-2xl lg:text-3xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                  <h3 className={`text-2xl lg:text-3xl font-bold mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
                     {plan.name}
                   </h3>
 
@@ -215,22 +233,42 @@ function Services() {
                     {plan.price}
                   </p>
 
-                  {/* Descripción */}
-                  <p className={`mb-8 leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
-                    {plan.description}
-                  </p>
+                  {/* Para quién es */}
+                  <div className="mb-6">
+                    <h4 className={`text-sm font-bold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                      {plan.forWho}
+                    </h4>
+                    <p className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                      {plan.forWhoText}
+                    </p>
+                  </div>
 
-                  {/* Lista de características */}
-                  <ul className="space-y-4 mb-10 flex-grow">
-                    {plan.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-3">
-                        <span className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></span>
-                        <span className={`text-sm leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Qué ofrece */}
+                  <div className="mb-6 flex-grow">
+                    <h4 className={`text-sm font-bold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                      {plan.whatOffers}
+                    </h4>
+                    <ul className="space-y-2">
+                      {plan.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-start gap-2">
+                          <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></span>
+                          <span className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Ideal si */}
+                  <div className="mb-6">
+                    <h4 className={`text-sm font-bold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                      {plan.idealFor}
+                    </h4>
+                    <p className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                      {plan.idealForText}
+                    </p>
+                  </div>
 
                   {/* Botón */}
                   <button 
@@ -250,7 +288,8 @@ function Services() {
                       duration-200
                       text-base
                       mt-auto
-                      ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                      border-2
+                      ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                     `} 
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
                   >
@@ -294,7 +333,7 @@ function Services() {
               }`}
             >
               {/* Título del plan */}
-              <h3 className={`text-2xl lg:text-3xl font-bold mb-6 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+              <h3 className={`text-2xl lg:text-3xl font-bold mb-4 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
                 {plan.name}
               </h3>
 
@@ -303,22 +342,42 @@ function Services() {
                 {plan.price}
               </p>
 
-              {/* Descripción */}
-              <p className={`mb-8 leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
-                {plan.description}
-              </p>
+              {/* Para quién es */}
+              <div className="mb-6">
+                <h4 className={`text-sm font-bold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                  {plan.forWho}
+                </h4>
+                <p className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                  {plan.forWhoText}
+                </p>
+              </div>
 
-              {/* Lista de características */}
-              <ul className="space-y-4 mb-10 flex-grow">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <span className={`w-2 h-2 rounded-full mt-2 flex-shrink-0 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></span>
-                    <span className={`text-sm leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              {/* Qué ofrece */}
+              <div className="mb-6 flex-grow">
+                <h4 className={`text-sm font-bold mb-3 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                  {plan.whatOffers}
+                </h4>
+                <ul className="space-y-2">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-2">
+                      <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0 ${isDarkMode ? 'bg-[#F6F3E8]' : 'bg-gray-900'}`}></span>
+                      <span className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Ideal si */}
+              <div className="mb-6">
+                <h4 className={`text-sm font-bold mb-2 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
+                  {plan.idealFor}
+                </h4>
+                <p className={`text-xs leading-relaxed transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
+                  {plan.idealForText}
+                </p>
+              </div>
 
               {/* Botón */}
               <button 
@@ -338,7 +397,8 @@ function Services() {
                   duration-200
                   text-base
                   mt-auto
-                  ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 text-gray-900' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                  border-2
+                  ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
                 `} 
                 style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
               >

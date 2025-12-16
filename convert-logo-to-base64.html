@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertir Logo a Base64</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    input[type="file"] {
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px dashed #ccc;
+      border-radius: 4px;
+      width: 100%;
+    }
+    button {
+      background: #000;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    button:hover {
+      background: #333;
+    }
+    textarea {
+      width: 100%;
+      min-height: 200px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+      margin-top: 20px;
+    }
+    .preview {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .preview img {
+      max-width: 200px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: white;
+    }
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffc107;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🖼️ Convertir Logo a Base64 para Email</h1>
+    
+    <div class="warning">
+      <strong>⚠️ Nota importante:</strong> Base64 aumenta el tamaño del email. 
+      Es mejor subir la imagen a un servidor público (Imgur, tu dominio, etc.) y usar una URL.
+    </div>
+
+    <input type="file" id="imageInput" accept="image/*" />
+    
+    <div class="preview" id="preview"></div>
+    
+    <button onclick="convertToBase64()">Convertir a Base64</button>
+    <button onclick="copyToClipboard()">Copiar Base64</button>
+    
+    <textarea id="base64Output" placeholder="El código base64 aparecerá aquí..."></textarea>
+    
+    <div style="margin-top: 20px;">
+      <h3>📋 Cómo usar en EmailJS:</h3>
+      <ol>
+        <li>Convierte tu logo a base64 usando esta herramienta</li>
+        <li>Copia el código base64 generado</li>
+        <li>En EmailJS, reemplaza la línea del logo con:</li>
+        <pre style="background: #f5f5f5; padding: 10px; border-radius: 4px; overflow-x: auto;">
+&lt;img src="data:image/png;base64,PASTA_AQUI_EL_BASE64" alt="Neko Dev" style="max-width: 180px; height: auto; display: block; margin: 0 auto;" /&gt;</pre>
+      </ol>
+    </div>
+  </div>
+
+  <script>
+    let base64String = ''
+
+    function convertToBase64() {
+      const fileInput = document.getElementById('imageInput')
+      const file = fileInput.files[0]
+      
+      if (!file) {
+        alert('Por favor, selecciona una imagen primero')
+        return
+      }
+
+      const reader = new FileReader()
+      
+      reader.onload = function(e) {
+        base64String = e.target.result
+        document.getElementById('base64Output').value = base64String
+        
+        // Mostrar preview
+        const preview = document.getElementById('preview')
+        preview.innerHTML = `
+          <h3>Vista previa:</h3>
+          <img src="${base64String}" alt="Preview" />
+          <p style="margin-top: 10px; color: #666;">Tamaño del código: ${(base64String.length / 1024).toFixed(2)} KB</p>
+        `
+      }
+      
+      reader.onerror = function() {
+        alert('Error al leer el archivo')
+      }
+      
+      reader.readAsDataURL(file)
+    }
+
+    function copyToClipboard() {
+      const output = document.getElementById('base64Output')
+      if (!output.value) {
+        alert('Primero convierte una imagen a base64')
+        return
+      }
+      
+      output.select()
+      document.execCommand('copy')
+      alert('✅ Base64 copiado al portapapeles!')
+    }
+  </script>
+</body>
+</html>
+

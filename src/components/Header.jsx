@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { HiSun, HiMoon } from 'react-icons/hi'
@@ -9,6 +9,7 @@ function Header() {
   const { isDarkMode, toggleTheme } = useTheme()
   const { language, toggleLanguage } = useLanguage()
   const location = useLocation()
+  const navigate = useNavigate()
 
   const translations = {
     es: {
@@ -34,6 +35,13 @@ function Header() {
       return location.pathname === '/'
     }
     return location.pathname.startsWith(path)
+  }
+
+  const handleContactClick = (e) => {
+    if (location.pathname !== '/') {
+      e.preventDefault()
+      navigate('/#contact')
+    }
   }
 
   return (
@@ -130,7 +138,8 @@ function Header() {
               </a>
             ) : (
               <Link
-                to="/#contact"
+                to="/"
+                onClick={handleContactClick}
                 className={`relative transition text-sm pb-2 group ${
                   isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
                 }`}
@@ -226,8 +235,11 @@ function Header() {
               </a>
             ) : (
               <Link
-                to="/#contact"
-                onClick={() => setIsMenuOpen(false)}
+                to="/"
+                onClick={(e) => {
+                  setIsMenuOpen(false)
+                  handleContactClick(e)
+                }}
                 className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
                 style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
               >

@@ -27,7 +27,7 @@ function AreasSlider() {
   const translations = {
     es: {
       title: 'Todo en un espacio',
-      description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      description: 'Ofrecemos soluciones integrales para tu presencia digital. Desde el diseño hasta el desarrollo, todo bajo un mismo techo.',
       ctaButton: 'Conocenos',
       areas: [
         {
@@ -76,7 +76,7 @@ function AreasSlider() {
     },
     en: {
       title: 'All in one space',
-      description: 'Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet',
+      description: 'We offer comprehensive solutions for your digital presence. From design to development, everything under one roof.',
       ctaButton: 'Know Us',
       areas: [
         {
@@ -284,7 +284,7 @@ function AreasSlider() {
 
             {/* Columna derecha - Descripción y botón (solo desktop) */}
             <div className="hidden lg:flex flex-col justify-start">
-              <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                 {t.description}
               </p>
               <button className={`
@@ -292,12 +292,15 @@ function AreasSlider() {
                 py-4 
                 rounded-full
                 font-medium 
-                transition-colors 
+                transition-all 
                 duration-200
                 text-base
                 self-start
-                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-              `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                border-2
+                ${isDarkMode 
+                  ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' 
+                  : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
+              `} style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}>
                 {t.ctaButton}
               </button>
             </div>
@@ -421,16 +424,16 @@ function AreasSlider() {
                   }`}
                 >
                   {/* Título ÁREA */}
-                  <h3 className={`text-lg font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <h3 className={`text-lg font-bold transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
                     {area.title}
                   </h3>
                   
                   {/* Información de contacto */}
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {area.location}
                   </p>
                   
-                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                  <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                     {area.tagline}
                   </p>
                 </div>
@@ -450,16 +453,16 @@ function AreasSlider() {
                       className="space-y-1 text-center"
                     >
                       {/* Título ÁREA */}
-                      <h3 className={`text-lg font-medium transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                      <h3 className={`text-lg font-bold transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}>
                         {area.title}
                       </h3>
                       
                       {/* Información de contacto */}
-                      <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                      <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                         {area.location}
                       </p>
                       
-                      <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                      <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
                         {area.tagline}
                       </p>
                     </div>
@@ -496,7 +499,7 @@ function AreasSlider() {
 
         {/* Mobile: Descripción y botón debajo del slider - OCULTO EN MOBILE */}
         <div className="hidden">
-          <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+          <p className={`mb-6 leading-relaxed text-left transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
             {t.description}
           </p>
             <button className={`
@@ -509,7 +512,7 @@ function AreasSlider() {
               text-base
               self-start
               ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
-            `} style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+            `} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
               {t.ctaButton}
             </button>
         </div>

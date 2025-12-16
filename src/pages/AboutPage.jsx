@@ -9,41 +9,44 @@ function AboutPage() {
     es: {
       about: {
         title: 'Nosotros',
-        intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+        intro: 'Somos un estudio creativo que combina diseño, desarrollo y estrategia digital. Creemos en el poder de las ideas bien ejecutadas y en construir relaciones duraderas con nuestros clientes.',
       },
       team: [
         {
           name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+          role: 'Desarrollador web full stack y co-fundador de Neko dev',
+          description: 'Estudió en Da Vinci y se especializa en crear sitios web innovadores e interactivos con diseños dinámicos y experiencias de usuario excepcionales.',
         },
         {
           name: 'Luna Bianchi',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+          role: 'Diseñadora gráfica y co-fundadora de Neko dev',
+          description: 'Estudiante de la UBA apasionada por el diseño. Busca constantemente crecer como diseñadora, creando piezas innovadoras y cautivadoras que conecten con las audiencias.',
         },
       ],
       process: {
-        title: 'Nuestro proceso de trabajo',
-        intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        title: 'Nuestro proceso',
+        title2: 'de trabajo',
+        intro: '',
         steps: [
           {
             number: '01',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Descubrimiento',
+            description: 'Nos sumergimos en tu proyecto para entender tus objetivos, tu audiencia y tu visión. Investigamos y analizamos para crear una estrategia sólida.',
           },
           {
             number: '02',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Diseño',
+            description: 'Transformamos ideas en diseños visuales atractivos y funcionales. Creamos prototipos y refinamos cada detalle hasta lograr la experiencia perfecta.',
           },
           {
             number: '03',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Desarrollo',
+            description: 'Damos vida a los diseños con código limpio y optimizado. Construimos sitios rápidos, seguros y escalables que funcionan en todos los dispositivos.',
           },
           {
             number: '04',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Lanzamiento',
+            description: 'Preparamos todo para el lanzamiento y te acompañamos en cada paso. Brindamos soporte continuo para asegurar el éxito de tu proyecto.',
           },
         ],
       },
@@ -51,41 +54,44 @@ function AboutPage() {
     en: {
       about: {
         title: 'About Us',
-        intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+        intro: 'We are a creative studio that combines design, development and digital strategy. We believe in the power of well-executed ideas and building lasting relationships with our clients.',
       },
       team: [
         {
           name: 'Tomás Averbuj',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+          role: 'Full stack web developer and co-founder of Neko dev',
+          description: 'Graduated from Da Vinci and specializes in creating innovative and interactive websites with dynamic designs and exceptional user experiences.',
         },
         {
           name: 'Luna Bianchi',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+          role: 'Graphic designer and co-founder of Neko dev',
+          description: 'UBA student passionate about design. Constantly seeking to grow as a designer, creating innovative and captivating pieces that connect with audiences.',
         },
       ],
       process: {
-        title: 'Our Work Process',
-        intro: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        title: 'Our Work',
+        title2: 'Process',
+        intro: '',
         steps: [
           {
             number: '01',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Discovery',
+            description: 'We dive into your project to understand your goals, audience and vision. We research and analyze to create a solid strategy.',
           },
           {
             number: '02',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Design',
+            description: 'We transform ideas into attractive and functional visual designs. We create prototypes and refine every detail until we achieve the perfect experience.',
           },
           {
             number: '03',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Development',
+            description: 'We bring designs to life with clean, optimized code. We build fast, secure and scalable sites that work on all devices.',
           },
           {
             number: '04',
-            title: 'Lorem ipsum',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            title: 'Launch',
+            description: 'We prepare everything for launch and accompany you every step of the way. We provide ongoing support to ensure the success of your project.',
           },
         ],
       },
@@ -148,7 +154,7 @@ function AboutPage() {
                 <h3 
                   className={`
                     text-center 
-                    mb-4
+                    mb-2
                     transition-colors duration-300
                     ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                   `} 
@@ -156,6 +162,22 @@ function AboutPage() {
                 >
                   {member.name}
                 </h3>
+                
+                {/* Rol */}
+                {member.role && (
+                  <p 
+                    className={`
+                      text-center 
+                      mb-4
+                      text-sm md:text-base
+                      transition-colors duration-300
+                      ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
+                    `} 
+                    style={{ fontFamily: 'var(--font-delight)', fontWeight: 700 }}
+                  >
+                    {member.role}
+                  </p>
+                )}
                 
                 {/* Descripción */}
                 <p 
@@ -189,8 +211,8 @@ function AboutPage() {
             </div>
           </div>
 
-          {/* Título y texto introductorio */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24 md:mb-32 max-w-6xl mx-auto">
+          {/* Título */}
+          <div className="mb-8 md:mb-32 max-w-6xl mx-auto">
             {/* Título a la izquierda */}
             <div>
               <h2 
@@ -198,30 +220,16 @@ function AboutPage() {
                   text-4xl md:text-5xl lg:text-6xl 
                   font-black 
                   text-left
+                  leading-tight
                   transition-colors duration-300
                   ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                 `} 
                 style={{ fontFamily: 'var(--font-delight)', fontWeight: 900 }}
               >
                 {t.process.title}
+                <br />
+                {t.process.title2}
               </h2>
-            </div>
-            
-            {/* Texto a la derecha */}
-            <div className="flex items-start justify-end">
-              <p 
-                className={`
-                  text-right 
-                  text-base md:text-lg
-                  leading-relaxed
-                  max-w-md
-                  transition-colors duration-300
-                  ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
-                `} 
-                style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
-              >
-                {t.process.intro}
-              </p>
             </div>
           </div>
 

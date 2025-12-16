@@ -165,7 +165,7 @@ function FAQsPage() {
                     transition-colors duration-300
                     ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
                   `}
-                  style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                 >
                   {faq.answer}
                 </div>
