@@ -82,9 +82,9 @@ function Projects() {
       projects: [
         {
           id: 1,
-          name: 'Nombre del proyecto',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+          name: 'Iocus Juguetes',
+          category: 'webDevelop',
+          image: '/images/proyects-img/iocus/portada-proyecto.png',
         },
         {
           id: 2,
@@ -145,9 +145,9 @@ function Projects() {
       projects: [
         {
           id: 1,
-          name: 'Project name',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
+          name: 'Iocus',
+          category: 'webDevelop',
+          image: '/images/proyects-img/iocus/Tarjetas personales.png',
         },
         {
           id: 2,

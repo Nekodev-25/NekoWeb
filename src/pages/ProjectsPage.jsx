@@ -13,7 +13,8 @@ function ProjectsPage() {
       projects: [
         {
           id: 1,
-          name: 'Nombre del proyecto',
+          name: 'Iocus',
+          image: '/images/proyects-img/iocus/Tarjetas personales.png',
         },
         {
           id: 2,
@@ -67,7 +68,8 @@ function ProjectsPage() {
       projects: [
         {
           id: 1,
-          name: 'Project name',
+          name: 'Iocus',
+          image: '/images/proyects-img/iocus/Tarjetas personales.png',
         },
         {
           id: 2,
@@ -146,16 +148,25 @@ function ProjectsPage() {
               key={project.id}
               className="flex flex-col"
             >
-              {/* Rectángulo grande gris claro (placeholder de imagen) */}
+              {/* Imagen del proyecto */}
               <div 
                 className={`
                   w-full 
                   aspect-[4/3] 
                   mb-4
+                  overflow-hidden
                   transition-colors duration-300
                   ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}
                 `}
-              ></div>
+              >
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : null}
+              </div>
               
               {/* Línea separadora negra delgada */}
               <div 

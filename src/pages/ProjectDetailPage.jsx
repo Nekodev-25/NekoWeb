@@ -13,23 +13,23 @@ function ProjectDetailPage() {
     es: [
       {
         id: '1',
-        title: 'Lorem ips dolor sit',
+        title: 'Iocus',
         location: 'Buenos Aires, ARG.',
         year: '2025',
         pedido: {
           title: 'PEDIDO',
-          description: 'Diseño web completo con identidad visual y sistema de gestión de contenidos.'
+          description: 'IOCUS es una marca argentina de juegos para niños que hace poco tiempo incorporó alquileres para eventos, necesitaban un espacio en donde puedan organizar todos los servicios de manera eficaz.'
         },
         entrega: {
           title: 'ENTREGA',
-          description: 'Sitio web responsive, optimizado para SEO y con panel de administración.'
+          description: 'E-commerce completo con sistema de gestión de servicios de alquileres para eventos, plataforma web responsive con panel de administración para organizar todos los servicios de manera eficaz.'
         },
         link: {
           title: 'LINK A LA WEB',
           description: 'Ver proyecto en vivo',
           url: '#'
         },
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+        image: '/images/proyects-img/iocus/Proyecto.jpg'
       },
       {
         id: '2',
@@ -75,23 +75,23 @@ function ProjectDetailPage() {
     en: [
       {
         id: '1',
-        title: 'Lorem ips dolor sit',
+        title: 'Iocus',
         location: 'Buenos Aires, ARG.',
         year: '2025',
         pedido: {
           title: 'REQUEST',
-          description: 'Complete web design with visual identity and content management system.'
+          description: 'IOCUS is an Argentine children\'s games brand that recently incorporated event rentals, they needed a space where they could organize all services effectively.'
         },
         entrega: {
           title: 'DELIVERY',
-          description: 'Responsive website, SEO optimized with admin panel.'
+          description: 'Complete e-commerce with event rental service management system, responsive web platform with admin panel to organize all services effectively.'
         },
         link: {
           title: 'LINK TO WEB',
           description: 'View live project',
           url: '#'
         },
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'
+        image: '/images/proyects-img/iocus/Proyecto.jpg'
       },
       {
         id: '2',
@@ -308,10 +308,6 @@ function ProjectDetailPage() {
             <div 
               className={`
                 w-full 
-                aspect-[4/3] 
-                lg:aspect-auto
-                lg:h-[650px]
-                xl:h-[750px]
                 transition-colors duration-300
                 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-300'}
               `}
@@ -319,7 +315,7 @@ function ProjectDetailPage() {
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-auto"
               />
             </div>
           </div>

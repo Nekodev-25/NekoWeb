@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { Link } from 'react-router-dom'
+import TextType from './TextType'
 
 function Hero() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const { ref, isVisible } = useScrollReveal(0.3)
+  const [showDescription, setShowDescription] = useState(false)
 
   const translations = {
     es: {
@@ -39,14 +42,14 @@ function Hero() {
       `}
       style={{ scrollMarginTop: '80px', transition: 'opacity 700ms ease-out, transform 700ms ease-out' }}
     >
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center">
-          {/* Gatito diseñador con efecto de flotación - a la izquierda del título */}
-          <div className="w-full flex justify-start mb-4 lg:mb-0 lg:absolute lg:left-6 lg:top-1/2 lg:-translate-y-1/2">
+      <div className="container mx-auto px-6 relative z-10 w-full">
+        <div className="flex flex-col items-center text-center w-full">
+          {/* Gatito diseñador con efecto de flotación - arriba centrado en tablet/mobile, a la izquierda en desktop */}
+          <div className="w-full flex justify-center mb-2 md:mb-4 lg:mb-0 lg:absolute lg:left-6 lg:top-1/2 lg:-translate-y-1/2 lg:justify-start -mt-8 md:-mt-4 lg:mt-0">
             <div 
               className={`
-                w-[100px] h-[100px] 
-                md:w-[120px] md:h-[120px] 
+                w-[160px] h-[160px] 
+                md:w-[180px] md:h-[180px] 
                 lg:w-[140px] lg:h-[140px]
                 flex items-center justify-center
                 transition-transform duration-500
@@ -66,43 +69,42 @@ function Hero() {
           </div>
 
           {/* Título principal */}
-          <h1 
-            className={`
-              text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
-              font-black 
-              mb-6 lg:mb-8 
-              leading-[1.1] 
-              max-w-4xl
-              transition-colors duration-300
-              ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
-            `} 
-            style={{ 
-              fontFamily: 'var(--font-delight)', 
-              fontWeight: 900,
-              letterSpacing: '-0.02em'
-            }}
-          >
-            <span 
+          {isVisible && (
+            <h1 
               className={`
-                block
-                transition-all duration-700
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-              `}
-              style={{ transitionDelay: '200ms' }}
+                text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                font-black 
+                mb-6 lg:mb-8 
+                leading-[1.1] 
+                w-full
+                lg:max-w-4xl
+                transition-colors duration-300
+                ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
+              `} 
+              style={{ 
+                fontFamily: 'var(--font-delight)', 
+                fontWeight: 900,
+                letterSpacing: '-0.02em'
+              }}
             >
-              {t.title.split(' ').slice(0, Math.ceil(t.title.split(' ').length / 2)).join(' ')}
-            </span>
-            <span 
-              className={`
-                block
-                transition-all duration-700
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-              `}
-              style={{ transitionDelay: '400ms' }}
-            >
-              {t.title.split(' ').slice(Math.ceil(t.title.split(' ').length / 2)).join(' ')}
-            </span>
-          </h1>
+              <TextType
+                text={t.title}
+                as="span"
+                typingSpeed={50}
+                initialDelay={200}
+                loop={false}
+                showCursor={true}
+                hideCursorWhileTyping={false}
+                cursorCharacter="|"
+                cursorBlinkDuration={0.5}
+                className="block w-full"
+                onSentenceComplete={() => {
+                  setShowDescription(true)
+                }}
+                startOnVisible={false}
+              />
+            </h1>
+          )}
           
           {/* Descripción */}
           <p 
@@ -110,15 +112,16 @@ function Hero() {
               text-base md:text-lg 
               mb-10 lg:mb-12
               leading-relaxed 
-              max-w-2xl
+              w-full
+              lg:max-w-2xl
               transition-all duration-700
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+              ${showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
               ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}
             `} 
             style={{ 
               fontFamily: 'var(--font-delight)', 
               fontWeight: 400,
-              transitionDelay: '500ms'
+              transitionDelay: '300ms'
             }}
           >
             {t.description}
@@ -131,9 +134,9 @@ function Hero() {
               justify-center 
               items-center
               transition-all duration-700
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
+              ${showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
             `}
-            style={{ transitionDelay: '600ms' }}
+            style={{ transitionDelay: '500ms' }}
           >
             <Link
               to="/projects"
