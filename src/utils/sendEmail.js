@@ -53,7 +53,24 @@ export const sendEmail = async (formData) => {
     return { success: true, response }
   } catch (error) {
     console.error('❌ Error al enviar email:', error)
-    throw error
+    console.error('Configuración actual:', {
+      serviceId: emailjsConfig.serviceId ? '✅ Configurado' : '❌ Faltante',
+      templateId: emailjsConfig.templateId ? '✅ Configurado' : '❌ Faltante',
+      publicKey: emailjsConfig.publicKey ? '✅ Configurado' : '❌ Faltante',
+      toEmail: emailjsConfig.toEmail ? '✅ Configurado' : '❌ Faltante',
+    })
+    
+    // Mensaje de error más descriptivo
+    let errorMessage = 'Error al enviar el email. '
+    if (error.text) {
+      errorMessage += error.text
+    } else if (error.message) {
+      errorMessage += error.message
+    } else {
+      errorMessage += 'Por favor, verifica la configuración de EmailJS.'
+    }
+    
+    throw new Error(errorMessage)
   }
 }
 

@@ -30,7 +30,12 @@ export const validateEmailjsConfig = () => {
   
   if (missing.length > 0) {
     console.warn('⚠️ EmailJS: Faltan las siguientes variables de entorno:', missing.join(', '))
-    console.warn('📝 Crea un archivo .env en la raíz del proyecto con estas variables')
+    if (typeof window !== 'undefined') {
+      // Solo mostrar en el navegador, no en el servidor
+      console.warn('📝 En local: Crea un archivo .env en la raíz del proyecto con estas variables')
+      console.warn('📝 En producción (Vercel): Configura las variables en Settings → Environment Variables')
+      console.warn('📝 Después de agregar variables en Vercel, haz redeploy del proyecto')
+    }
     return false
   }
   
