@@ -3,21 +3,18 @@ import { emailjsConfig, validateEmailjsConfig } from '../config/emailjs'
 
 /**
  * Envía un email usando EmailJS
- * @param {Object} formData - Datos del formulario
- * @param {string} formData.name - Nombre del remitente
- * @param {string} formData.lastName - Apellido del remitente
- * @param {string} formData.email - Email del remitente
- * @param {string} formData.service - Servicio seleccionado
- * @param {string} formData.message - Mensaje/consulta
+ * @param {Object} formData - Datos del formulario (name, lastName, email, service, message)
+ * @param {Object} options
+ * @param {boolean} options.usePlanTemplate - true = usar template de "Solicitar plan"
  * @returns {Promise} - Promise que se resuelve cuando el email se envía
  */
-export const sendEmail = async (formData) => {
-  // Validar configuración
-  if (!validateEmailjsConfig()) {
+export const sendEmail = async (formData, options = {}) => {
+  const { usePlanTemplate = false } = options
+
+  if (!validateEmailjsConfig({ forPlan: usePlanTemplate })) {
     throw new Error('EmailJS no está configurado correctamente. Revisa las variables de entorno.')
   }
 
-  // Formatear fecha y hora
   const now = new Date()
   const time = now.toLocaleString('es-AR', {
     year: 'numeric',
@@ -27,7 +24,6 @@ export const sendEmail = async (formData) => {
     minute: '2-digit',
   })
 
-  // Preparar los parámetros para el template
   const templateParams = {
     name: `${formData.name} ${formData.lastName}`.trim(),
     lastName: formData.lastName || '',
@@ -35,17 +31,22 @@ export const sendEmail = async (formData) => {
     service: formData.service || 'No especificado',
     message: formData.message,
     time: time,
-    to_email: emailjsConfig.toEmail, // Email de destino
+    to_email: emailjsConfig.toEmail,
+  }
+
+  const templateId = usePlanTemplate ? emailjsConfig.templateIdPlan : emailjsConfig.templateId
+
+  if (!templateId) {
+    const missing = usePlanTemplate ? 'VITE_EMAILJS_TEMPLATE_ID_PLAN' : 'VITE_EMAILJS_TEMPLATE_ID'
+    throw new Error(`Falta configurar ${missing}. Agregala en .env (local) o en Vercel → Environment Variables y redeploy.`)
   }
 
   try {
-    // Inicializar EmailJS con la Public Key
     emailjs.init(emailjsConfig.publicKey)
 
-    // Enviar el email
     const response = await emailjs.send(
       emailjsConfig.serviceId,
-      emailjsConfig.templateId,
+      templateId,
       templateParams
     )
 
@@ -56,20 +57,19 @@ export const sendEmail = async (formData) => {
     console.error('Configuración actual:', {
       serviceId: emailjsConfig.serviceId ? '✅ Configurado' : '❌ Faltante',
       templateId: emailjsConfig.templateId ? '✅ Configurado' : '❌ Faltante',
+      templateIdPlan: emailjsConfig.templateIdPlan ? '✅ Configurado' : '❌ Faltante',
       publicKey: emailjsConfig.publicKey ? '✅ Configurado' : '❌ Faltante',
       toEmail: emailjsConfig.toEmail ? '✅ Configurado' : '❌ Faltante',
     })
-    
-    // Mensaje de error más descriptivo
+    if (error?.response) console.error('EmailJS response:', error.response)
+
     let errorMessage = 'Error al enviar el email. '
-    if (error.text) {
-      errorMessage += error.text
-    } else if (error.message) {
-      errorMessage += error.message
+    const detail = error?.text || error?.message || ''
+    if (detail) {
+      errorMessage += detail
     } else {
-      errorMessage += 'Por favor, verifica la configuración de EmailJS.'
+      errorMessage += 'Verifica en EmailJS que el template use las variables: name, lastName, email, service, message, time, to_email. Y que el dominio esté en "Allowed origins".'
     }
-    
     throw new Error(errorMessage)
   }
 }

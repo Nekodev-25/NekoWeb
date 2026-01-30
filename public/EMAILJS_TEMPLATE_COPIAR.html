@@ -1,0 +1,144 @@
+<!--
+  TEMPLATE EMAILJS - NEKODEV
+  ===========================
+  Cómo usarlo:
+  1. Entrá a https://dashboard.emailjs.com → Email Templates → Create New Template
+  2. En "Subject" pegá la línea del asunto (abajo).
+  3. En "Content" (HTML) pegá todo el contenido desde <!DOCTYPE> hasta </html> (el HTML de abajo).
+  4. En "Settings" del template, asegurate de que las variables coincidan con las que envía la app.
+
+  VARIABLES QUE ENVÍA LA APP (usar con {{nombre_variable}}):
+  - name ........... Nombre completo (nombre + apellido)
+  - lastName ....... Apellido
+  - email .......... Email del remitente
+  - service ........ Servicio elegido O "Plan X - Categoría" (ej: "Plan Básico - Páginas Web")
+  - message ........ Consulta / mensaje
+  - time ........... Fecha y hora del envío (formato legible)
+  - to_email ....... Email de destino (infonekodev@gmail.com)
+
+  ASUNTO SUGERIDO (pegarlo en el campo Subject del template):
+  Nuevo mensaje | {{service}} | {{name}}
+-->
+
+Subject (copiar en EmailJS → Subject):
+Nuevo mensaje | {{service}} | {{name}}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuevo mensaje - NekoDev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #F6F3E8;">
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #F6F3E8; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 600px; background-color: #000000; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+          
+          <tr>
+            <td style="padding: 40px 40px 30px; text-align: center; background-color: #000000;">
+              <img src="https://www.nekodev.com.ar/images/logo-blanco.png" alt="NekoDev" style="max-width: 180px; height: auto; display: block; margin: 0 auto;" />
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 0 40px 20px;">
+              <h1 style="margin: 0; color: #F6F3E8; font-size: 24px; font-weight: 700; text-align: center; letter-spacing: -0.02em; font-family: 'Archivo', sans-serif;">
+                Nuevo mensaje de contacto
+              </h1>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 0 40px 30px;">
+              <div style="height: 1px; background-color: #F6F3E8; opacity: 0.2;"></div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 0 40px 30px;">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="width: 120px; vertical-align: top;">
+                          <span style="color: #F6F3E8; font-size: 12px; font-weight: 700; text-transform: uppercase; opacity: 0.7; letter-spacing: 0.05em;">Nombre:</span>
+                        </td>
+                        <td><span style="color: #F6F3E8; font-size: 16px;">{{name}}</span></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="width: 120px; vertical-align: top;">
+                          <span style="color: #F6F3E8; font-size: 12px; font-weight: 700; text-transform: uppercase; opacity: 0.7;">Email:</span>
+                        </td>
+                        <td><a href="mailto:{{email}}" style="color: #F6F3E8; font-size: 16px; text-decoration: none;">{{email}}</a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="width: 120px; vertical-align: top;">
+                          <span style="color: #F6F3E8; font-size: 12px; font-weight: 700; text-transform: uppercase; opacity: 0.7;">Servicio / Plan:</span>
+                        </td>
+                        <td><span style="color: #F6F3E8; font-size: 16px;">{{service}}</span></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 20px;">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="width: 120px; vertical-align: top;">
+                          <span style="color: #F6F3E8; font-size: 12px; font-weight: 700; text-transform: uppercase; opacity: 0.7;">Fecha:</span>
+                        </td>
+                        <td><span style="color: #F6F3E8; font-size: 14px; opacity: 0.8;">{{time}}</span></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 0 40px 20px;">
+              <div style="height: 1px; background-color: #F6F3E8; opacity: 0.2;"></div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 0 40px 40px;">
+              <div style="margin-bottom: 12px;">
+                <span style="color: #F6F3E8; font-size: 12px; font-weight: 700; text-transform: uppercase; opacity: 0.7;">Mensaje:</span>
+              </div>
+              <div style="padding: 24px; background-color: rgba(246, 243, 232, 0.1); border-radius: 8px; border-left: 3px solid #F6F3E8;">
+                <p style="margin: 0; color: #F6F3E8; font-size: 16px; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word;">{{message}}</p>
+              </div>
+            </td>
+          </tr>
+          
+          <tr>
+            <td style="padding: 30px 40px; background-color: rgba(246, 243, 232, 0.05); border-top: 1px solid rgba(246, 243, 232, 0.1);">
+              <p style="margin: 0; color: #F6F3E8; font-size: 12px; text-align: center; opacity: 0.7;">Este es un mensaje automático de <strong>NekoDev</strong>. Buenos Aires, Argentina.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

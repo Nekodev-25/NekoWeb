@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
+import PlanRequestModal from './PlanRequestModal'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -15,11 +16,16 @@ function PlansSelector({ initialPlanType }) {
   const { isDarkMode } = useTheme()
   const { ref, isVisible } = useScrollReveal(0.25)
   const navigate = useNavigate()
+  const location = useLocation()
   const [searchParams] = useSearchParams()
   const [selectedPlanType, setSelectedPlanType] = useState(initialPlanType || searchParams.get('plan') || 'basico')
   const [isFading, setIsFading] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalPlan, setModalPlan] = useState(null)
   const swiperRef = useRef(null)
+
+  const isOnServicesPage = location.pathname === '/services'
 
   // Detectar si estamos en mobile
   useEffect(() => {
@@ -265,6 +271,7 @@ function PlansSelector({ initialPlanType }) {
         ],
       },
       buttonText: 'Ver planes',
+      buttonTextRequest: 'Solicitar plan',
       keyMessage: 'Todos los planes son "desde". El precio final puede variar según alcance, funcionalidades y requerimientos específicos. Podés elegir un plan base o solicitar un presupuesto personalizado.',
     },
     en: {
@@ -490,12 +497,19 @@ function PlansSelector({ initialPlanType }) {
         ],
       },
       buttonText: 'View plans',
+      buttonTextRequest: 'Request plan',
       keyMessage: 'All plans are "from". The final price may vary according to scope, functionalities and specific requirements. You can choose a base plan or request a personalized quote.',
     },
   }
 
   const t = translations[language]
   const currentPlans = t.plans[selectedPlanType]
+  const planButtonText = isOnServicesPage ? t.buttonTextRequest : t.buttonText
+
+  const openPlanModal = (plan) => {
+    setModalPlan(plan)
+    setModalOpen(true)
+  }
 
   // Función para cambiar el tipo de plan con efecto de desvanecimiento
   const handlePlanTypeChange = (newType) => {
@@ -731,11 +745,10 @@ function PlansSelector({ initialPlanType }) {
 
                   {/* Botón */}
                   <button 
+                    type="button"
                     onClick={() => {
-                      const currentPath = window.location.pathname
-                      if (currentPath === '/services') {
-                        navigate(`/services?plan=${selectedPlanType}`, { replace: true })
-                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                      if (isOnServicesPage) {
+                        openPlanModal(plan)
                       } else {
                         navigate(`/services?plan=${selectedPlanType}`)
                       }
@@ -755,7 +768,7 @@ function PlansSelector({ initialPlanType }) {
                     `} 
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
                   >
-                    {t.buttonText}
+                    {planButtonText}
                   </button>
                 </div>
               </SwiperSlide>
@@ -836,16 +849,12 @@ function PlansSelector({ initialPlanType }) {
 
               {/* Botón */}
               <button 
+                type="button"
                 onClick={() => {
-                  const currentPath = window.location.pathname
-                  if (currentPath === '/services') {
-                    // Si ya estamos en servicios, actualizar la URL y reiniciar scroll
-                    navigate(`/services?plan=${selectedPlanType}`, { replace: true })
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  if (isOnServicesPage) {
+                    openPlanModal(plan)
                   } else {
-                    // Si estamos en otra página, navegar a servicios y reiniciar scroll
                     navigate(`/services?plan=${selectedPlanType}`)
-                    // El scroll se reiniciará cuando se cargue la página
                   }
                 }}
                 className={`
@@ -863,7 +872,7 @@ function PlansSelector({ initialPlanType }) {
                 `} 
                 style={{ fontFamily: 'var(--font-delight)', fontWeight: 500 }}
               >
-                {t.buttonText}
+                {planButtonText}
               </button>
             </div>
           ))}
@@ -897,6 +906,13 @@ function PlansSelector({ initialPlanType }) {
           margin-top: 24px;
         }
       `}</style>
+
+      <PlanRequestModal
+        isOpen={modalOpen}
+        onClose={() => { setModalOpen(false); setModalPlan(null) }}
+        plan={modalPlan}
+        planType={selectedPlanType}
+      />
     </section>
   )
 }

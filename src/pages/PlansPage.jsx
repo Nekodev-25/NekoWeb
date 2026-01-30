@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import PlanRequestModal from '../components/PlanRequestModal'
 
 function PlansPage() {
   const { language } = useLanguage()
@@ -10,6 +11,8 @@ function PlansPage() {
   const [selectedPlanType, setSelectedPlanType] = useState(searchParams.get('plan') || 'basico')
   const [isFading, setIsFading] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [modalPlan, setModalPlan] = useState(null)
   const sliderRef = useRef(null)
 
   // Sincronizar con el parámetro de URL cuando cambia
@@ -183,7 +186,7 @@ function PlansPage() {
           },
         ],
       },
-      buttonText: 'Ver planes',
+      buttonText: 'Solicitar plan',
     },
     en: {
       title: 'Plans and services',
@@ -299,11 +302,16 @@ function PlansPage() {
           },
         ],
       },
-      buttonText: 'View plans',
+      buttonText: 'Request plan',
     },
   }
 
   const t = translations[language]
+
+  const openPlanModal = (plan) => {
+    setModalPlan(plan)
+    setModalOpen(true)
+  }
   const currentPlans = t.plans[selectedPlanType]
 
   // Función para cambiar el tipo de plan con efecto de desvanecimiento
@@ -589,6 +597,8 @@ function PlansPage() {
 
               {/* Botón */}
               <button 
+                type="button"
+                onClick={() => openPlanModal(plan)}
                 className={`
                   w-full
                   px-8 
@@ -729,6 +739,8 @@ function PlansPage() {
 
               {/* Botón */}
               <button 
+                type="button"
+                onClick={() => openPlanModal(plan)}
                 className={`
                   w-full
                   px-8 
@@ -750,6 +762,13 @@ function PlansPage() {
           ))}
         </div>
       </div>
+
+      <PlanRequestModal
+        isOpen={modalOpen}
+        onClose={() => { setModalOpen(false); setModalPlan(null) }}
+        plan={modalPlan}
+        planType={selectedPlanType}
+      />
     </section>
   )
 }
