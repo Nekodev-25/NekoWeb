@@ -660,6 +660,8 @@ function PlansSelector({ initialPlanType }) {
                     mx-auto
                     w-full
                     max-w-[calc(100vw-3rem)]
+                    min-h-[600px]
+                    md:min-h-0
                     ${
                       isDarkMode 
                         ? 'border-[#F6F3E8] bg-transparent' 
@@ -744,7 +746,7 @@ function PlansSelector({ initialPlanType }) {
                       py-4 
                       rounded-full
                       font-medium 
-                      transition-all 
+                      transition-all
                       duration-200
                       text-base
                       mt-auto

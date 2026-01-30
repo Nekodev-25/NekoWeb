@@ -130,12 +130,10 @@ function ProjectsPage() {
             >
               {/* Imagen del proyecto */}
               <div 
-                className={`
+                className="
                   w-full 
                   mb-4
-                  transition-colors duration-300
-                  ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}
-                `}
+                "
               >
                 {project.image ? (
                   <img
@@ -239,7 +237,9 @@ function ProjectsPage() {
                     {t.customSection.footer.phone}
                   </a>
                   <a 
-                    href="mailto:infonekodev@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=infonekodev@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                   >
@@ -410,7 +410,9 @@ function ProjectsPage() {
                   {t.customSection.footer.phone}
                 </a>
                 <a 
-                  href="mailto:infonekodev@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=infonekodev@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
                   style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                 >

@@ -1,12 +1,16 @@
+import { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
+import { gsap } from 'gsap'
 
 function ProjectDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
+  const [direction, setDirection] = useState('next') // 'next' o 'prev'
+  const contentRef = useRef(null)
 
   // Datos de proyectos (después se pueden cargar desde una API o CMS)
   const projectsData = {
@@ -69,7 +73,7 @@ function ProjectDetailPage() {
           description: '',
           url: ''
         },
-        image: '/images/proyects-img/nainai/proyecto_nainai.png'
+        image: '/images/proyects-img/nainai/proyecto_nainai.jpg'
       },
     ],
     en: [
@@ -131,7 +135,7 @@ function ProjectDetailPage() {
           description: '',
           url: ''
         },
-        image: '/images/proyects-img/nainai/proyecto_nainai.png'
+        image: '/images/proyects-img/nainai/proyecto_nainai.jpg'
       },
     ]
   }
@@ -143,6 +147,81 @@ function ProjectDetailPage() {
   const currentIndex = projects.findIndex(p => p.id === id)
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
   const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null
+
+  // Efecto de transición cuando cambia el proyecto
+  useEffect(() => {
+    const el = contentRef.current
+    if (!el) return
+
+    // Determinar la dirección de entrada basada en la dirección guardada
+    const offsetX = direction === 'next' ? 80 : -80
+    
+    // Configurar estado inicial: desplazado con aceleración GPU
+    gsap.set(el, {
+      x: offsetX,
+      visibility: 'visible',
+      force3D: true, // Aceleración GPU
+      willChange: 'transform'
+    })
+
+    // Animación de entrada optimizada (solo movimiento, sin fade)
+    const tl = gsap.timeline({
+      defaults: {
+        force3D: true,
+        immediateRender: false
+      }
+    })
+    tl.to(el, {
+      x: 0,
+      duration: 0.5,
+      ease: 'power2.out' // Más ligero que power3
+    })
+
+    // Limpiar willChange después de la animación
+    tl.call(() => {
+      gsap.set(el, { willChange: 'auto' })
+    })
+
+    return () => {
+      tl.kill()
+    }
+  }, [id, direction])
+
+  // Función para navegar con transición
+  const handleNavigate = (projectId, navDirection) => {
+    const el = contentRef.current
+    if (!el) {
+      navigate(`/project/${projectId}`)
+      return
+    }
+
+    setDirection(navDirection) // Guardar la dirección para el próximo proyecto
+    
+    // Determinar la dirección de salida (opuesta a la de entrada)
+    const exitOffsetX = navDirection === 'next' ? -80 : 80
+    
+    // Optimizar para animación
+    gsap.set(el, { willChange: 'transform' })
+    
+    // Animación de salida optimizada (solo movimiento, sin fade)
+    const exitTl = gsap.timeline({
+      defaults: {
+        force3D: true,
+        immediateRender: false
+      },
+      onComplete: () => {
+        // Navegar al nuevo proyecto
+        navigate(`/project/${projectId}`)
+        // El useEffect se activará automáticamente para la animación de entrada
+      }
+    })
+    
+    exitTl.to(el, {
+      x: exitOffsetX,
+      duration: 0.35,
+      ease: 'power2.in' // Más ligero que power3
+    })
+  }
 
   const translations = {
     es: {
@@ -167,7 +246,15 @@ function ProjectDetailPage() {
     >
       <div className="container mx-auto px-6">
         {/* Contenido principal */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 relative">
+        <div 
+          ref={contentRef}
+          className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 relative"
+          style={{ 
+            visibility: 'hidden',
+            backfaceVisibility: 'hidden',
+            perspective: 1000
+          }}
+        >
           {/* Columna izquierda - Información sticky */}
           <div className="lg:col-span-2 flex flex-col">
             <div className="lg:sticky lg:top-32 lg:self-start">
@@ -258,11 +345,11 @@ function ProjectDetailPage() {
                 </div>
               )}
 
-              {/* Navegación entre proyectos */}
-              <div className="mt-auto pt-8 flex justify-between items-center">
+              {/* Navegación entre proyectos - Solo desktop */}
+              <div className="hidden lg:flex mt-auto pt-8 justify-between items-center">
                 {prevProject ? (
                   <button
-                    onClick={() => navigate(`/project/${prevProject.id}`)}
+                    onClick={() => handleNavigate(prevProject.id, 'prev')}
                     className={`
                       px-6 py-3 
                       rounded-full 
@@ -284,7 +371,7 @@ function ProjectDetailPage() {
                 
                 {nextProject ? (
                   <button
-                    onClick={() => navigate(`/project/${nextProject.id}`)}
+                    onClick={() => handleNavigate(nextProject.id, 'next')}
                     className={`
                       px-6 py-3 
                       rounded-full 
@@ -309,19 +396,67 @@ function ProjectDetailPage() {
 
           {/* Columna derecha - Imagen alargada */}
           <div className="lg:col-span-3">
-            <div 
-              className={`
-                w-full 
-                transition-colors duration-300
-                ${isDarkMode ? 'bg-gray-800' : 'bg-gray-300'}
-              `}
-            >
+            <div className="w-full">
               <img
                 src={project.image}
                 alt={project.title}
                 className="w-full h-auto block"
-                style={{ maxWidth: '100%', height: 'auto' }}
+                style={{ 
+                  maxWidth: '100%', 
+                  height: 'auto',
+                  willChange: 'auto',
+                  imageRendering: 'auto'
+                }}
+                loading="lazy"
+                decoding="async"
               />
+            </div>
+            
+            {/* Navegación entre proyectos - Solo mobile, debajo de la imagen */}
+            <div className="lg:hidden mt-8 flex justify-between items-center">
+              {prevProject ? (
+                <button
+                  onClick={() => handleNavigate(prevProject.id, 'prev')}
+                  className={`
+                    px-6 py-3 
+                    rounded-full 
+                    font-medium 
+                    transition-all 
+                    duration-200
+                    text-sm
+                    border-2
+                    ${isDarkMode 
+                      ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' 
+                      : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'
+                    }
+                  `}
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+                >
+                  ← {t.prev}
+                </button>
+              ) : <div />}
+              
+              {nextProject ? (
+                <button
+                  onClick={() => handleNavigate(nextProject.id, 'next')}
+                  className={`
+                    px-6 py-3 
+                    rounded-full 
+                    font-medium 
+                    transition-all 
+                    duration-200
+                    text-sm
+                    border-2
+                    ${isDarkMode 
+                      ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' 
+                      : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'
+                    }
+                  `}
+                  style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+                >
+                  {t.next} →
+                </button>
+              ) : <div />}
             </div>
           </div>
         </div>

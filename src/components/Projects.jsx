@@ -7,12 +7,13 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 function Projects() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
-  const [activeFilter, setActiveFilter] = useState('webDevelopDesign')
+  const [activeFilter, setActiveFilter] = useState('all') // Por defecto: mostrar todos
   const { ref, isVisible } = useScrollReveal(0.25)
   const titleRef = useRef(null)
   const imagesRef = useRef(null)
   const [isTitleVisible, setIsTitleVisible] = useState(false)
   const [isImagesVisible, setIsImagesVisible] = useState(false)
+  const [isFilterAnimating, setIsFilterAnimating] = useState(false)
 
   // Observador para el título (desde la izquierda)
   useEffect(() => {
@@ -65,6 +66,19 @@ function Projects() {
       imagesObserver.disconnect()
     }
   }, [])
+
+  // Animación de desvanecimiento del grid cuando se cambia el filtro
+  useEffect(() => {
+    if (!imagesRef.current) return
+
+    setIsFilterAnimating(true)
+
+    const timeout = setTimeout(() => {
+      setIsFilterAnimating(false)
+    }, 350)
+
+    return () => clearTimeout(timeout)
+  }, [activeFilter])
 
   const translations = {
     es: {
@@ -331,7 +345,13 @@ function Projects() {
               ref={imagesRef}
               className="col-span-2"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div
+                className={`
+                  grid grid-cols-1 md:grid-cols-2 gap-8
+                  transition-opacity duration-500 ease-out
+                  ${isFilterAnimating ? 'opacity-0' : 'opacity-100'}
+                `}
+              >
                 {filteredProjects.map((project, index) => (
                   <div 
                     key={project.id} 
@@ -348,11 +368,13 @@ function Projects() {
                     <div className="
                       w-full 
                       h-[400px] 
-                      bg-gray-200 
                       rounded-lg 
                       overflow-hidden 
                       mb-4
                       relative
+                      flex
+                      items-center
+                      justify-center
                     ">
                       <img
                         src={project.image}
@@ -360,7 +382,8 @@ function Projects() {
                         className="
                           w-full 
                           h-full 
-                          object-cover 
+                          object-contain
+                          md:object-cover
                           transition-transform 
                           duration-300 
                           group-hover:scale-105
@@ -411,7 +434,13 @@ function Projects() {
                 : 'opacity-0 translate-x-20'
             }`}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div
+              className={`
+                grid grid-cols-1 md:grid-cols-2 gap-8
+                transition-opacity duration-500 ease-out
+                ${isFilterAnimating ? 'opacity-0' : 'opacity-100'}
+              `}
+            >
               {filteredProjects.map((project, index) => (
                 <div 
                   key={project.id} 
@@ -428,11 +457,13 @@ function Projects() {
                   <div className="
                     w-full 
                     h-[400px] 
-                    bg-gray-200 
                     rounded-lg 
                     overflow-hidden 
                     mb-4
                     relative
+                    flex
+                    items-center
+                    justify-center
                   ">
                     <img
                       src={project.image}
@@ -440,7 +471,8 @@ function Projects() {
                       className="
                         w-full 
                         h-full 
-                        object-cover 
+                        object-contain
+                        md:object-cover
                         transition-transform 
                         duration-300 
                         group-hover:scale-105
@@ -479,25 +511,34 @@ function Projects() {
             </div>
           </div>
 
-          {/* Footer con información de contacto */}
-          <div className="mt-12">
-            <p className={`mb-2 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.location}</p>
-            <p className={`mb-6 text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>{t.tagline}</p>
+          {/* Footer con gatito y botón de contacto */}
+          <div className="mt-12 flex flex-col items-center">
+            {/* Gatito dev */}
+            <div className="mb-8 flex justify-center">
+              <div className="w-[160px] h-[160px] flex items-center justify-center">
+                <img
+                  src={isDarkMode ? '/images/gatitos/noche/dev_noche-04.png' : '/images/gatitos/dia/dev_dia-15.png'}
+                  alt="Gatito desarrollador"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+            
+            {/* Botón Contactanos */}
             <a 
               href="#contact"
               className={`
-                inline-block
-                px-6 
-                py-3 
+                px-8 
+                py-4 
                 rounded-full 
                 font-medium 
-                transition-colors 
+                transition-all 
                 duration-200
-                text-sm
-                text-center
-                ${isDarkMode ? 'bg-white hover:bg-gray-200 text-black' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}
+                text-base
+                border-2
+                ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
               `} 
-              style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
             >
               {t.contactButton}
             </a>

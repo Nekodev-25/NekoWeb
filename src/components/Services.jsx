@@ -204,6 +204,8 @@ function Services() {
                     mx-auto
                     w-full
                     max-w-[calc(100vw-3rem)]
+                    min-h-[600px]
+                    md:min-h-0
                     ${
                       isDarkMode 
                         ? 'border-[#F6F3E8] bg-transparent' 

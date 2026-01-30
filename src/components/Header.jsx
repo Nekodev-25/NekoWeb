@@ -66,10 +66,10 @@ function Header() {
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.home}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 isActive('/') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -82,10 +82,10 @@ function Header() {
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.projects}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 isActive('/projects') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -98,10 +98,10 @@ function Header() {
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.services}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 isActive('/services') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -114,10 +114,10 @@ function Header() {
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.about}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 isActive('/about') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -129,10 +129,10 @@ function Header() {
                 className={`relative transition text-sm pb-2 group ${
                   isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
                 }`}
-                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
               >
                 {t.contact}
-                <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                   isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900'
                 }`}></div>
               </a>
@@ -143,10 +143,10 @@ function Header() {
                 className={`relative transition text-sm pb-2 group ${
                   isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
                 }`}
-                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
               >
                 {t.contact}
-                <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                   isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900'
                 }`}></div>
               </Link>
@@ -161,7 +161,7 @@ function Header() {
               className={`flex items-center gap-2 px-3 py-2 rounded-lg transition ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
             >
-              <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+              <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}>
                 {language === 'es' ? 'ES' : 'EN'}
               </span>
             </button>
@@ -196,7 +196,7 @@ function Header() {
               to="/"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.home}
             </Link>
@@ -204,7 +204,7 @@ function Header() {
               to="/projects"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.projects}
             </Link>
@@ -212,7 +212,7 @@ function Header() {
               to="/services"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.services}
             </Link>
@@ -220,7 +220,7 @@ function Header() {
               to="/about"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+              style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
             >
               {t.about}
             </Link>
@@ -229,7 +229,7 @@ function Header() {
                 href="#contact"
                 onClick={() => setIsMenuOpen(false)}
                 className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
               >
                 {t.contact}
               </a>
@@ -241,7 +241,7 @@ function Header() {
                   handleContactClick(e)
                 }}
                 className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
-                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
+                style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}
               >
                 {t.contact}
               </Link>
@@ -251,7 +251,7 @@ function Header() {
                 onClick={toggleLanguage}
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg transition flex-1 ${isDarkMode ? 'hover:bg-gray-800 text-[#F6F3E8]' : 'hover:bg-gray-200 text-gray-900'}`}
               >
-                <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}>
+                <span className="text-sm font-medium" style={{ fontFamily: 'var(--font-archivo)', fontWeight: 400 }}>
                   {language === 'es' ? 'ES' : 'EN'}
                 </span>
               </button>

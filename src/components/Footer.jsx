@@ -84,7 +84,9 @@ function Footer() {
               {t.contact.phone}
             </a>
             <a 
-              href="mailto:infonekodev@gmail.com"
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=infonekodev@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#2D3748]' : 'text-[#F6F3E8]'}`} 
               style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
             >
@@ -115,7 +117,7 @@ function Footer() {
           {/* Iconos de redes sociales a la derecha */}
           <div className="flex items-center gap-4">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/neko-dev-747a773a6/"
               target="_blank"
               rel="noopener noreferrer"
               className="group transition-opacity duration-200 hover:opacity-70"
@@ -141,7 +143,7 @@ function Footer() {
               }`} />
             </a>
             <a
-              href="https://tiktok.com"
+              href="https://www.tiktok.com/@nekodevok"
               target="_blank"
               rel="noopener noreferrer"
               className="group transition-opacity duration-200 hover:opacity-70"
