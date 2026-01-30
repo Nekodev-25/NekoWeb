@@ -22,16 +22,20 @@ function ServicesPage() {
   // Servicios para el formulario personalizado
   const servicesData = {
     es: [
-      { id: 0, name: 'Web develope' },
-      { id: 1, name: 'Web develope' },
-      { id: 2, name: 'Web develope' },
-      { id: 3, name: 'Web develope' },
+      { id: 0, name: 'Diseño web' },
+      { id: 1, name: 'Desarrollo web' },
+      { id: 2, name: 'Branding' },
+      { id: 3, name: 'E-commerce' },
+      { id: 4, name: 'Aplicaciones' },
+      { id: 5, name: 'Otro' },
     ],
     en: [
-      { id: 0, name: 'Web develop' },
-      { id: 1, name: 'Web develop' },
-      { id: 2, name: 'Web develop' },
-      { id: 3, name: 'Web develop' },
+      { id: 0, name: 'Web design' },
+      { id: 1, name: 'Web development' },
+      { id: 2, name: 'Branding' },
+      { id: 3, name: 'E-commerce' },
+      { id: 4, name: 'Applications' },
+      { id: 5, name: 'Other' },
     ],
   }
 

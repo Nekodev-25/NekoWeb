@@ -308,8 +308,12 @@ function ProjectsPage() {
                       style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                     >
                       <option value="">{t.customSection.formPlaceholders.service}</option>
-                      <option value="web-develop-design">Web develop & design</option>
-                      <option value="branding">Branding</option>
+                      <option value="Diseño web">{language === 'es' ? 'Diseño web' : 'Web design'}</option>
+                      <option value="Desarrollo web">{language === 'es' ? 'Desarrollo web' : 'Web development'}</option>
+                      <option value="Branding">Branding</option>
+                      <option value="E-commerce">E-commerce</option>
+                      <option value="Aplicaciones">{language === 'es' ? 'Aplicaciones' : 'Applications'}</option>
+                      <option value="Otro">{language === 'es' ? 'Otro' : 'Other'}</option>
                     </select>
                     <div className="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none pb-3">
                       <svg className={`w-5 h-5 transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
