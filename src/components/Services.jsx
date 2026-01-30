@@ -3,14 +3,20 @@ import { useNavigate } from 'react-router-dom'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/pagination'
 
 function Services() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
   const { ref, isVisible } = useScrollReveal(0.25)
   const navigate = useNavigate()
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const sliderRef = useRef(null)
+  const [isMobile, setIsMobile] = useState(false)
+  const swiperRef = useRef(null)
 
   const translations = {
     es: {
@@ -119,50 +125,17 @@ function Services() {
 
   const t = translations[language]
 
-  // Detectar el slide actual basado en el scroll
+  // Detectar si estamos en mobile
   useEffect(() => {
-    const slider = sliderRef.current
-    if (!slider) return
-
-    const updateCurrentSlide = () => {
-      const cardWidth = window.innerWidth - 48 // 3rem = 48px
-      const gap = 24 // 1.5rem = 24px
-      const scrollLeft = slider.scrollLeft
-      const slideWidth = cardWidth + gap
-      const slideIndex = Math.round(scrollLeft / slideWidth)
-      const clampedIndex = Math.max(0, Math.min(slideIndex, t.plans.length - 1))
-      setCurrentSlide(clampedIndex)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
     }
-
-    // Escuchar el evento scroll en tiempo real
-    slider.addEventListener('scroll', updateCurrentSlide)
     
-    // También escuchar scrollend para asegurar actualización final después del snap
-    if ('onscrollend' in window) {
-      slider.addEventListener('scrollend', updateCurrentSlide)
-    }
-
-    // Actualizar al inicio
-    updateCurrentSlide()
-
-    return () => {
-      slider.removeEventListener('scroll', updateCurrentSlide)
-      if ('onscrollend' in window) {
-        slider.removeEventListener('scrollend', updateCurrentSlide)
-      }
-    }
-  }, [t.plans.length])
-
-  // Función para ir a un slide específico
-  const goToSlide = (index) => {
-    const slider = sliderRef.current
-    if (!slider) return
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
     
-    setCurrentSlide(index) // Actualizar inmediatamente
-    const cardWidth = window.innerWidth - 48 // 3rem = 48px
-    const gap = 24 // 1.5rem = 24px
-    slider.scrollTo({ left: index * (cardWidth + gap), behavior: 'smooth' })
-  }
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   return (
     <section
@@ -197,13 +170,28 @@ function Services() {
         </div>
 
         {/* Cards de planes */}
-        {/* Mobile: Slider horizontal */}
+        {/* Mobile: Swiper */}
         <div className="md:hidden relative overflow-hidden">
-          <div ref={sliderRef} className="overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth" id="services-slider">
-            <div className="flex gap-6 px-6" style={{ width: 'max-content' }}>
-              {t.plans.map((plan, index) => (
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper
+            }}
+            onSlideChange={(swiper) => {
+              // El pagination se actualiza automáticamente
+            }}
+            slidesPerView={1}
+            centeredSlides={true}
+            spaceBetween={24}
+            pagination={{
+              clickable: true,
+              dynamicBullets: false,
+            }}
+            modules={[Pagination]}
+            className="servicesSwiper"
+          >
+            {t.plans.map((plan, index) => (
+              <SwiperSlide key={index}>
                 <div
-                  key={index}
                   className={`
                     relative 
                     border 
@@ -213,9 +201,9 @@ function Services() {
                     duration-300 
                     flex 
                     flex-col 
-                    snap-center
-                    flex-shrink-0
-                    w-[calc(100vw-3rem)]
+                    mx-auto
+                    w-full
+                    max-w-[calc(100vw-3rem)]
                     ${
                       isDarkMode 
                         ? 'border-[#F6F3E8] bg-transparent' 
@@ -296,29 +284,9 @@ function Services() {
                     {t.buttonText}
                   </button>
                 </div>
-              ))}
-            </div>
-          </div>
-          
-          {/* Indicadores de puntos */}
-          <div className="flex justify-center gap-2 mt-6">
-            {t.plans.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`transition-all duration-300 rounded-full ${
-                  currentSlide === index
-                    ? isDarkMode 
-                      ? 'bg-[#F6F3E8] w-8 h-2' 
-                      : 'bg-gray-900 w-8 h-2'
-                    : isDarkMode 
-                      ? 'bg-[#F6F3E8]/30 w-2 h-2' 
-                      : 'bg-gray-900/30 w-2 h-2'
-                }`}
-                aria-label={`Ir al slide ${index + 1}`}
-              />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
 
         {/* Desktop: Grid normal */}
@@ -408,6 +376,27 @@ function Services() {
           ))}
         </div>
       </div>
+
+      {/* Estilos personalizados para Swiper */}
+      <style>{`
+        .servicesSwiper .swiper-pagination-bullet {
+          width: 8px;
+          height: 8px;
+          background: ${isDarkMode ? 'rgba(246, 243, 232, 0.3)' : 'rgba(17, 24, 39, 0.3)'};
+          opacity: 1;
+          transition: all 0.3s;
+        }
+        .servicesSwiper .swiper-pagination-bullet-active {
+          width: 32px;
+          height: 8px;
+          border-radius: 4px;
+          background: ${isDarkMode ? '#F6F3E8' : '#111827'};
+        }
+        .servicesSwiper .swiper-pagination {
+          position: relative;
+          margin-top: 24px;
+        }
+      `}</style>
     </section>
   )
 }

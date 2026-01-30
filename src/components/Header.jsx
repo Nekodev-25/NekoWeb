@@ -76,17 +76,17 @@ function Header() {
               }`}></div>
             </Link>
             <Link
-              to="/about"
+              to="/projects"
               className={`relative transition text-sm pb-2 group ${
-                isActive('/about') 
+                isActive('/projects') 
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.about}
+              {t.projects}
               <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                isActive('/about') 
+                isActive('/projects') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
               }`}></div>
@@ -108,17 +108,17 @@ function Header() {
               }`}></div>
             </Link>
             <Link
-              to="/projects"
+              to="/about"
               className={`relative transition text-sm pb-2 group ${
-                isActive('/projects') 
+                isActive('/about') 
                   ? isDarkMode ? 'text-[#F6F3E8] font-medium' : 'text-gray-900 font-medium'
                   : isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'
               }`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.projects}
+              {t.about}
               <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                isActive('/projects') 
+                isActive('/about') 
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
               }`}></div>
@@ -201,12 +201,12 @@ function Header() {
               {t.home}
             </Link>
             <Link
-              to="/about"
+              to="/projects"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.about}
+              {t.projects}
             </Link>
             <Link
               to="/services"
@@ -217,12 +217,12 @@ function Header() {
               {t.services}
             </Link>
             <Link
-              to="/projects"
+              to="/about"
               onClick={() => setIsMenuOpen(false)}
               className={`block transition ${isDarkMode ? 'text-gray-300 hover:text-[#F6F3E8]' : 'text-gray-700 hover:text-gray-900'}`}
               style={{ fontFamily: 'var(--font-archivo)', fontWeight: 300 }}
             >
-              {t.projects}
+              {t.about}
             </Link>
             {location.pathname === '/' ? (
               <a

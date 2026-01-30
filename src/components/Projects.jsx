@@ -7,7 +7,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 function Projects() {
   const { language } = useLanguage()
   const { isDarkMode } = useTheme()
-  const [activeFilter, setActiveFilter] = useState('webDesign')
+  const [activeFilter, setActiveFilter] = useState('webDevelopDesign')
   const { ref, isVisible } = useScrollReveal(0.25)
   const titleRef = useRef(null)
   const imagesRef = useRef(null)
@@ -69,10 +69,10 @@ function Projects() {
   const translations = {
     es: {
       title: 'Proyectos',
+      viewAllProjects: 'Ver todos los proyectos',
       filters: {
         all: 'Todos',
-        webDesign: 'Web design',
-        webDevelop: 'Web develop',
+        webDevelopDesign: 'Web develop & design',
         branding: 'Branding',
       },
       location: 'Buenos Aires, Argentina',
@@ -83,59 +83,29 @@ function Projects() {
         {
           id: 1,
           name: 'Iocus Juguetes',
-          category: 'webDevelop',
+          category: 'webDevelopDesign',
           image: '/images/proyects-img/iocus/portada-proyecto.png',
         },
         {
           id: 2,
-          name: 'Nombre del proyecto',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+          name: 'LeveleAr',
+          category: 'webDevelopDesign',
+          image: '/images/proyects-img/levelear/levelear-portada.png',
         },
         {
           id: 3,
-          name: 'Nombre del proyecto',
+          name: 'Nai Nai',
           category: 'branding',
-          image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-        },
-        {
-          id: 4,
-          name: 'Nombre del proyecto',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
-        },
-        {
-          id: 5,
-          name: 'Nombre del proyecto',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
-        },
-        {
-          id: 6,
-          name: 'Nombre del proyecto',
-          category: 'branding',
-          image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop',
-        },
-        {
-          id: 7,
-          name: 'Nombre del proyecto',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=800&h=600&fit=crop',
-        },
-        {
-          id: 8,
-          name: 'Nombre del proyecto',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
+          image: '/images/proyects-img/nainai/portada_nainai.png',
         },
       ],
     },
     en: {
       title: 'Projects',
+      viewAllProjects: 'View all projects',
       filters: {
         all: 'All',
-        webDesign: 'Web design',
-        webDevelop: 'Web develop',
+        webDevelopDesign: 'Web develop & design',
         branding: 'Branding',
       },
       location: 'Buenos Aires, Argentina',
@@ -146,50 +116,20 @@ function Projects() {
         {
           id: 1,
           name: 'Iocus',
-          category: 'webDevelop',
-          image: '/images/proyects-img/iocus/Tarjetas personales.png',
+          category: 'webDevelopDesign',
+          image: '/images/proyects-img/iocus/portada-proyecto.png',
         },
         {
           id: 2,
-          name: 'Project name',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+          name: 'LeveleAr',
+          category: 'webDevelopDesign',
+          image: '/images/proyects-img/levelear/levelear-portada.png',
         },
         {
           id: 3,
-          name: 'Project name',
+          name: 'Nai Nai',
           category: 'branding',
-          image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-        },
-        {
-          id: 4,
-          name: 'Project name',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop',
-        },
-        {
-          id: 5,
-          name: 'Project name',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop',
-        },
-        {
-          id: 6,
-          name: 'Project name',
-          category: 'branding',
-          image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop',
-        },
-        {
-          id: 7,
-          name: 'Project name',
-          category: 'webDesign',
-          image: 'https://images.unsplash.com/photo-1558655146-364adaf1fcc9?w=800&h=600&fit=crop',
-        },
-        {
-          id: 8,
-          name: 'Project name',
-          category: 'webDevelop',
-          image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=600&fit=crop',
+          image: '/images/proyects-img/nainai/portada_nainai.png',
         },
       ],
     },
@@ -197,9 +137,9 @@ function Projects() {
 
   const t = translations[language]
 
-  // Filtrar proyectos según el filtro activo
-  const filteredProjects = activeFilter === 'all' 
-    ? t.projects 
+  // Filtrar proyectos según el filtro activo (webDevelopDesign incluye diseño y desarrollo web)
+  const filteredProjects = activeFilter === 'all'
+    ? t.projects
     : t.projects.filter(project => project.category === activeFilter)
 
   return (
@@ -225,9 +165,22 @@ function Projects() {
               : 'opacity-0 -translate-x-20'
           }`}
         >
-          <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
-            {t.title}
-          </h2>
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <h2 className={`text-5xl md:text-6xl lg:text-7xl xl:text-[100px] font-black leading-tight md:leading-[80px] transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 900, letterSpacing: '0%' }}>
+              {t.title}
+            </h2>
+            <Link
+              to="/projects"
+              className={`
+                self-start sm:self-auto
+                px-6 py-3 rounded-full font-medium transition-all duration-200 text-sm border-2
+                ${isDarkMode ? 'border-[#F6F3E8] text-[#F6F3E8] hover:bg-[#F6F3E8] hover:text-black' : 'border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-[#F6F3E8]'}
+              `}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
+            >
+              {t.viewAllProjects}
+            </Link>
+          </div>
         </div>
 
         {/* Filtros - Mobile horizontal, Desktop vertical */}
@@ -242,36 +195,22 @@ function Projects() {
               style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'all' ? 500 : 400 }}
             >
               {t.filters.all}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 activeFilter === 'all'
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
               }`}></div>
             </button>
             <button
-              onClick={() => setActiveFilter('webDesign')}
+              onClick={() => setActiveFilter('webDevelopDesign')}
               className={`relative transition-colors pb-2 group ${
                 isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-              } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
-              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
+              } ${activeFilter === 'webDevelopDesign' ? 'font-medium' : ''}`}
+              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelopDesign' ? 500 : 400 }}
             >
-              {t.filters.webDesign}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                activeFilter === 'webDesign'
-                  ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                  : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-              }`}></div>
-            </button>
-            <button
-              onClick={() => setActiveFilter('webDevelop')}
-              className={`relative transition-colors pb-2 group ${
-                isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-              } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
-              style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
-            >
-              {t.filters.webDevelop}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                activeFilter === 'webDevelop'
+              {t.filters.webDevelopDesign}
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
+                activeFilter === 'webDevelopDesign'
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
               }`}></div>
@@ -284,7 +223,7 @@ function Projects() {
               style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
             >
               {t.filters.branding}
-              <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+              <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                 activeFilter === 'branding'
                   ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                   : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -308,7 +247,7 @@ function Projects() {
                       style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'all' ? 500 : 400 }}
                     >
                       {t.filters.all}
-                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                         activeFilter === 'all'
                           ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                           : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
@@ -317,31 +256,15 @@ function Projects() {
                   </li>
                   <li>
                     <button
-                      onClick={() => setActiveFilter('webDesign')}
+                      onClick={() => setActiveFilter('webDevelopDesign')}
                       className={`relative text-left transition-colors pb-2 group ${
                         isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                      } ${activeFilter === 'webDesign' ? 'font-medium' : ''}`}
-                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDesign' ? 500 : 400 }}
+                      } ${activeFilter === 'webDevelopDesign' ? 'font-medium' : ''}`}
+                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelopDesign' ? 500 : 400 }}
                     >
-                      {t.filters.webDesign}
-                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                        activeFilter === 'webDesign'
-                          ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
-                          : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
-                      }`}></div>
-                    </button>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => setActiveFilter('webDevelop')}
-                      className={`relative text-left transition-colors pb-2 group ${
-                        isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'
-                      } ${activeFilter === 'webDevelop' ? 'font-medium' : ''}`}
-                      style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'webDevelop' ? 500 : 400 }}
-                    >
-                      {t.filters.webDevelop}
-                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
-                        activeFilter === 'webDevelop'
+                      {t.filters.webDevelopDesign}
+                      <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
+                        activeFilter === 'webDevelopDesign'
                           ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                           : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')
                       }`}></div>
@@ -356,7 +279,7 @@ function Projects() {
                       style={{ fontFamily: 'var(--font-delight)', fontWeight: activeFilter === 'branding' ? 500 : 400 }}
                     >
                       {t.filters.branding}
-                      <div className={`absolute bottom-0 left-0 right-0 h-[1px] transition-colors ${
+                      <div className={`absolute bottom-0 left-0 right-0 h-px transition-colors ${
                         activeFilter === 'branding'
                           ? (isDarkMode ? 'bg-white' : 'bg-gray-900')
                           : (isDarkMode ? 'bg-transparent group-hover:bg-white' : 'bg-transparent group-hover:bg-gray-900')

@@ -272,8 +272,7 @@ function Contactanos() {
                     style={{ fontFamily: 'var(--font-delight)', fontWeight: 400 }}
                   >
                     <option value="">{t.formPlaceholders.service}</option>
-                    <option value="web-design">Web design</option>
-                    <option value="web-develop">Web develop</option>
+                    <option value="web-develop-design">Web develop & design</option>
                     <option value="branding">Branding</option>
                   </select>
                   <div className="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none pb-3">
@@ -353,43 +352,17 @@ function Contactanos() {
           </div>
         </div>
 
-        {/* Mobile: Imagen del gatito e información de contacto debajo del formulario */}
+        {/* Mobile: Solo imagen del gatito (sin información de contacto) */}
         <div className="lg:hidden mt-12">
           <div className="flex flex-col items-center">
             {/* Imagen del gatito callcenter */}
-            <div className="w-[200px] h-[200px] mb-6 flex items-center justify-center overflow-hidden">
+            <div className="w-[200px] h-[200px] flex items-center justify-center overflow-hidden">
               <img 
                 src={isDarkMode ? '/images/gatitos/noche/contacto_noche-05.png' : '/images/gatitos/dia/contacto_dia-11.png'} 
                 alt="Gatito callcenter" 
                 className="w-[200px] h-[200px] object-contain"
                 style={{ width: '200px', height: '200px', objectFit: 'contain' }}
               />
-            </div>
-
-            {/* Información de contacto */}
-            <div className="space-y-1 text-center">
-              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
-                {t.footer.location}
-              </p>
-              <p className={`text-sm transition-colors duration-300 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}>
-                {t.footer.tagline}
-              </p>
-              <a 
-                href="https://wa.me/541169729914" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
-                style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
-              >
-                {t.footer.phone}
-              </a>
-              <a 
-                href="mailto:infonekodev@gmail.com"
-                className={`block text-sm transition-colors duration-300 hover:opacity-70 ${isDarkMode ? 'text-[#F6F3E8]' : 'text-gray-900'}`} 
-                style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
-              >
-                {t.footer.email}
-              </a>
             </div>
           </div>
         </div>

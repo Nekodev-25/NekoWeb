@@ -138,17 +138,25 @@ function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {t.team.map((member, index) => (
               <div key={index} className="flex flex-col items-center">
-                {/* Placeholder de imagen */}
+                {/* Imagen del miembro */}
                 <div 
                   className={`
                     w-full 
                     aspect-square 
                     max-w-md
                     mb-6
+                    rounded-lg
+                    overflow-hidden
                     transition-colors duration-300
                     ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}
                   `}
-                ></div>
+                >
+                  <img
+                    src={index === 0 ? '/images/nosotros-img/tomas-averbuj.jpg' : '/images/nosotros-img/luna-bianchi.jpeg'}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
                 
                 {/* Nombre */}
                 <h3 

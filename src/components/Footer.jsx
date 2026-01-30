@@ -65,7 +65,7 @@ function Footer() {
             <img 
               src={isDarkMode ? '/images/gatitos/dia/redes_dia-16.png' : '/images/gatitos/noche/redes_noche-09.png'}
               alt="Gato redes"
-              className="w-24 h-24 object-contain"
+              className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain"
             />
           </div>
 

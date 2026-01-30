@@ -14,27 +14,17 @@ function ProjectsPage() {
         {
           id: 1,
           name: 'Iocus',
-          image: '/images/proyects-img/iocus/Tarjetas personales.png',
+          image: '/images/proyects-img/iocus/portada-proyecto.png',
         },
         {
           id: 2,
-          name: 'Nombre del proyecto',
+          name: 'LeveleAr',
+          image: '/images/proyects-img/levelear/levelear-portada.png',
         },
         {
           id: 3,
-          name: 'Nombre del proyecto',
-        },
-        {
-          id: 4,
-          name: 'Nombre del proyecto',
-        },
-        {
-          id: 5,
-          name: 'Nombre del proyecto',
-        },
-        {
-          id: 6,
-          name: 'Nombre del proyecto',
+          name: 'Nai Nai',
+          image: '/images/proyects-img/nainai/portada_nainai.png',
         },
       ],
       customSection: {
@@ -69,27 +59,17 @@ function ProjectsPage() {
         {
           id: 1,
           name: 'Iocus',
-          image: '/images/proyects-img/iocus/Tarjetas personales.png',
+          image: '/images/proyects-img/iocus/portada-proyecto.png',
         },
         {
           id: 2,
-          name: 'Project name',
+          name: 'LeveleAr',
+          image: '/images/proyects-img/levelear/levelear-portada.png',
         },
         {
           id: 3,
-          name: 'Project name',
-        },
-        {
-          id: 4,
-          name: 'Project name',
-        },
-        {
-          id: 5,
-          name: 'Project name',
-        },
-        {
-          id: 6,
-          name: 'Project name',
+          name: 'Nai Nai',
+          image: '/images/proyects-img/nainai/portada_nainai.png',
         },
       ],
       customSection: {
@@ -152,9 +132,7 @@ function ProjectsPage() {
               <div 
                 className={`
                   w-full 
-                  aspect-[4/3] 
                   mb-4
-                  overflow-hidden
                   transition-colors duration-300
                   ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}
                 `}
@@ -163,7 +141,8 @@ function ProjectsPage() {
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-auto block"
+                    style={{ maxWidth: '100%', height: 'auto' }}
                   />
                 ) : null}
               </div>
@@ -329,8 +308,7 @@ function ProjectsPage() {
                       style={{ fontFamily: 'var(--font-delight)', fontWeight: 300 }}
                     >
                       <option value="">{t.customSection.formPlaceholders.service}</option>
-                      <option value="web-design">Web design</option>
-                      <option value="web-develop">Web develop</option>
+                      <option value="web-develop-design">Web develop & design</option>
                       <option value="branding">Branding</option>
                     </select>
                     <div className="absolute right-0 top-0 bottom-0 flex items-center pointer-events-none pb-3">

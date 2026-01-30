@@ -76,7 +76,7 @@ function AboutUs() {
               <div className="relative w-full max-w-md mb-6">
                 <div className={`w-full aspect-square rounded-lg overflow-hidden transition-colors duration-300 ${isDarkMode ? 'bg-gray-800' : 'bg-gray-200'}`}>
                   <img
-                    src={`https://images.unsplash.com/photo-${index === 0 ? '1472099645785-5658abf4ff4e' : '1494790108377-be9c29b29330'}?w=400&h=400&fit=crop`}
+                    src={index === 0 ? '/images/nosotros-img/tomas-averbuj.jpg' : '/images/nosotros-img/luna-bianchi.jpeg'}
                     alt={member.name}
                     className="w-full h-full object-cover"
                   />

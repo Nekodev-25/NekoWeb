@@ -24,7 +24,7 @@ function PlansPage() {
     es: {
       title: 'Planes y servicios',
       planTypes: {
-        basico: 'Básico',
+        basico: 'Páginas Web',
         ecommerce: 'E-commerce',
         aplicaciones: 'Aplicaciones',
       },
@@ -188,7 +188,7 @@ function PlansPage() {
     en: {
       title: 'Plans and services',
       planTypes: {
-        basico: 'Basic',
+        basico: 'Web Pages',
         ecommerce: 'E-commerce',
         aplicaciones: 'Applications',
       },
